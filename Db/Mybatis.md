@@ -3,6 +3,8 @@ title: MyBatis
 keywords: [mybatis, db]
 ---
 
+# MyBatis
+
 ## 使用
 
 - 添加MyBatis的依赖
@@ -682,3 +684,18 @@ public <T, S extends IService> Boolean updateCom(HashMap<String, T> exists, Hash
     return true;
 }
 ```
+
+## 一对多分页查询
+
+- 如果一对多多表查询中想要使用分页的话，mybatis的默认实现会有一些问题
+
+  - 自动实现的分页原理是运行时加上动态加limit，但是再一对多关联查询中这个limit说不准确的，需要通过修改sql查询，手动添加limit才能正确显示
+
+- ```sql
+  #一对
+  select * from (
+  
+  )
+  ```
+
+- 
