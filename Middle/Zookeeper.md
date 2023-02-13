@@ -42,7 +42,7 @@ keywords: [middle]
   - `create -s /path value`
 - 查询节点详细信息
   - `ls -s /path`
-    - ![image-20220716152537751](Zookeeper/image-20220716152537751.png)
+    - ![image-20220716152537751](..//pic//image-20220716152537751.png)
 
 ### Curator
 
