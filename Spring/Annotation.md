@@ -1,3 +1,8 @@
+---
+title: Spring注解
+keywords: [spring, annotation]
+---
+
 # @Scheduled实现定时任务
 
 ### 参数详解

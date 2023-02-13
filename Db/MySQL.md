@@ -680,7 +680,7 @@ keywords: [mysql, db]
 
 ### 条件处理
 
-![image-20220320155557326](C:\Users\BDA\Documents\Note\pic\image-20220320155557326.png)
+![image-20220320155557326](..//pic//image-20220320155557326.png)
 
 ## 事务
 
@@ -742,7 +742,7 @@ keywords: [mysql, db]
     - 脏读，不可重复读，幻读都可避免
     - 性能十分低下
 
-![image-20220318132259385](C:\Users\BDA\Documents\Note\pic\image-20220318132259385.png)
+![image-20220318132259385](..//pic//image-20220318132259385.png)
 
 ### SavePoint
 
@@ -914,9 +914,9 @@ end
 - Update触发器
 - Delete触发器
 
-![image-20220320160434561](C:\Users\BDA\Documents\Note\pic\image-20220320160434561.png)
+![image-20220320160434561](..//pic//image-20220320160434561.png)
 
-![image-20220320160526307](C:\Users\BDA\Documents\Note\pic\image-20220320160526307.png)
+![image-20220320160526307](..//pic//image-20220320160526307.png)
 
 ## InnoDB引擎
 
@@ -948,13 +948,13 @@ end
 
 ### 磁盘结构
 
-![image-20220320234541137](C:\Users\BDA\Documents\Note\pic\image-20220320234541137.png)
+![image-20220320234541137](..//pic//image-20220320234541137.png)
 
-![image-20220320234634719](C:\Users\BDA\Documents\Note\pic\image-20220320234634719.png)
+![image-20220320234634719](..//pic//image-20220320234634719.png)
 
-![image-20220320234739425](C:\Users\BDA\Documents\Note\pic\image-20220320234739425.png)
+![image-20220320234739425](..//pic//image-20220320234739425.png)
 
-![image-20220320235020735](C:\Users\BDA\Documents\Note\pic\image-20220320235020735.png)
+![image-20220320235020735](..//pic//image-20220320235020735.png)
 
 ### 事务原理
 
@@ -1114,7 +1114,7 @@ end
 
 - `insert / update / delete / select ... for update` 
 
-![image-20220320175841051](C:\Users\BDA\Documents\Note\pic\image-20220320175841051.png)
+![image-20220320175841051](..//pic//image-20220320175841051.png)
 
 ### 行级锁
 
@@ -1127,17 +1127,17 @@ end
   - 允许获取排他锁的事务更新数据，阻止其他事务获得相同数据集的共享锁和排他锁
 
 
-![image-20220320181113652](C:\Users\BDA\Documents\Note\pic\image-20220320181113652.png)
+![image-20220320181113652](..//pic//image-20220320181113652.png)
 
-![image-20220320182348192](C:\Users\BDA\Documents\Note\pic\image-20220320182348192.png)
+![image-20220320182348192](..//pic//image-20220320182348192.png)
 
 #### 间隙锁
 
 - 
 
-![image-20220320183111394](C:\Users\BDA\Documents\Note\pic\image-20220320183111394.png)
+![image-20220320183111394](..//pic//image-20220320183111394.png)
 
-![image-20220320183120778](C:\Users\BDA\Documents\Note\pic\image-20220320183120778.png)
+![image-20220320183120778](..//pic//image-20220320183120778.png)
 
 #### 临键锁（next-key lock）
 
@@ -1145,19 +1145,19 @@ end
 
 ## Mysql工具
 
-![image-20220321130500940](C:\Users\BDA\Documents\Note\pic\image-20220321130500940.png)
+![image-20220321130500940](..//pic//image-20220321130500940.png)
 
-![image-20220321130746523](C:\Users\BDA\Documents\Note\pic\image-20220321130746523.png)
+![image-20220321130746523](..//pic//image-20220321130746523.png)
 
-![image-20220321131301287](C:\Users\BDA\Documents\Note\pic\image-20220321131301287.png)
+![image-20220321131301287](..//pic//image-20220321131301287.png)
 
-![image-20220321132826897](C:\Users\BDA\Documents\Note\pic\image-20220321132826897.png)
+![image-20220321132826897](..//pic//image-20220321132826897.png)
 
-![image-20220321132929087](C:\Users\BDA\Documents\Note\pic\image-20220321132929087.png)
+![image-20220321132929087](..//pic//image-20220321132929087.png)
 
-![image-20220321133539942](C:\Users\BDA\Documents\Note\pic\image-20220321133539942.png)
+![image-20220321133539942](..//pic//image-20220321133539942.png)
 
-![image-20220321134719464](C:\Users\BDA\Documents\Note\pic\image-20220321134719464.png)
+![image-20220321134719464](..//pic//image-20220321134719464.png)
 
 ## 日志
 

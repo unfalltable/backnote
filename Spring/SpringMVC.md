@@ -1,7 +1,6 @@
 ---
-title: SpringMVC学习手册
-categories: Spring
-tags: [SpringMVC]
+title: Springmvc
+keywords: [spring, mvc]
 ---
 
 ## 文件上传
@@ -87,13 +86,13 @@ tags: [SpringMVC]
       - 在DispatcherServlet进行视图渲染之前调用，所以我们可以对ModelAndView对象进行操作
     - afterCompletion
   - 配置拦截器，xml或者配置类
-    - ![image-20220113151640290](C:\Users\15630\AppData\Roaming\Typora\typora-user-images\image-20220113151640290.png)
+    - ![image-20220113151640290](..//pic//image-20220113151640290.png)
 
 ## 异常处理
 
 ### SimpleMappingExceptionResolver(简单映射异常处理器)
 
-![image-20220113165254540](C:\Users\15630\AppData\Roaming\Typora\typora-user-images\image-20220113165254540.png)
+![image-20220113165254540](..//pic//image-20220113165254540.png)
 
 ### HandlerExceptionResolver(异常处理接口)
 

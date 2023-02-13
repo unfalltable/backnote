@@ -1,3 +1,10 @@
+---
+title: 对象存储
+keywords: [util]
+---
+
+
+
 # MinIO
 
 ## 简介

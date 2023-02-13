@@ -1,11 +1,7 @@
 ---
 title: MongoDB
-keywords: [mongodb, db]
+keywords: [mongodb, db] 
 ---
-
-
-
-# 
 
 ## 简介
 

@@ -1,3 +1,8 @@
+---
+title: 部署
+keywords: [util]
+---
+
 ## 云服务器配置Java环境
 
 - 下载JavaSe，maven安装包

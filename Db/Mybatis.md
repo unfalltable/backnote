@@ -7,7 +7,7 @@ keywords: [mybatis, db]
 
 - 添加MyBatis的依赖
 
-![image-20220114134705157](C:\Users\BDA\Documents\Note\pic\image-20220114134705157.png)
+![image-20220114134705157](..//pic//image-20220114134705157.png)
 
 - 创建user数据表
 
@@ -15,35 +15,35 @@ keywords: [mybatis, db]
 
 - 创建UserMapper.xml
 
-  ![image-20220114105552990](C:\Users\BDA\Documents\Note\pic\image-20220114105552990.png)
+  ![image-20220114105552990](..//pic//image-20220114105552990.png)
 
 - 创建mybatis.xml
 
-![image-20220114134633386](C:\Users\BDA\Documents\Note\pic\image-20220114134633386.png)
+![image-20220114134633386](..//pic//image-20220114134633386.png)
 
 - 测试
 
-![image-20220114134559769](C:\Users\BDA\Documents\Note\pic\image-20220114134559769.png)
+![image-20220114134559769](..//pic//image-20220114134559769.png)
 
 ## 增删改
 
 ### 增
 
-![image-20220114213526300](C:\Users\BDA\Documents\Note\pic\image-20220114213526300.png)
+![image-20220114213526300](..//pic//image-20220114213526300.png)
 
-![image-20220114213455777](C:\Users\BDA\Documents\Note\pic\image-20220114213455777.png)
+![image-20220114213455777](..//pic//image-20220114213455777.png)
 
 ### 删
 
-![image-20220114220447737](C:\Users\BDA\Documents\Note\pic\image-20220114220447737.png)
+![image-20220114220447737](..//pic//image-20220114220447737.png)
 
-![image-20220114220520027](C:\Users\BDA\Documents\Note\pic\image-20220114220520027.png)
+![image-20220114220520027](..//pic//image-20220114220520027.png)
 
 ### 改
 
-![image-20220114220502273](C:\Users\BDA\Documents\Note\pic\image-20220114220502273.png)
+![image-20220114220502273](..//pic//image-20220114220502273.png)
 
-![image-20220114220530524](C:\Users\BDA\Documents\Note\pic\image-20220114220530524.png)
+![image-20220114220530524](..//pic//image-20220114220530524.png)
 
 ## 配置文件
 
@@ -77,9 +77,9 @@ keywords: [mybatis, db]
 ## Dao层实现
 
 - 代理开发实现
-  - ![image-20220115112741790](C:\Users\BDA\Documents\Note\pic\image-20220115112741790.png)
-  - ![image-20220115113017435](C:\Users\BDA\Documents\Note\pic\image-20220115113017435.png)
-  - ![image-20220115113057015](C:\Users\BDA\Documents\Note\pic\image-20220115113057015.png)
+  - ![image-20220115112741790](..//pic//image-20220115112741790.png)
+  - ![image-20220115113017435](..//pic//image-20220115113017435.png)
+  - ![image-20220115113057015](..//pic//image-20220115113057015.png)
     - UserMapper.xml 中的命名空间需要是接口的全路径
     - 方法id需要和接口方法名一致
     - 放回值和参数也需要一致
@@ -97,10 +97,10 @@ keywords: [mybatis, db]
 
 - if
 
-![image-20220115155256987](C:\Users\BDA\Documents\Note\pic\image-20220115155256987.png)
+![image-20220115155256987](..//pic//image-20220115155256987.png)
 
 - foreach
-  - ![image-20220115162729908](C:\Users\BDA\Documents\Note\pic\image-20220115162729908.png)
+  - ![image-20220115162729908](..//pic//image-20220115162729908.png)
 
 ### Sql语句抽取
 
@@ -128,11 +128,11 @@ keywords: [mybatis, db]
 
 - 导入依赖
 
-  - ![image-20220115192044967](C:\Users\BDA\Documents\Note\pic\image-20220115192044967.png)
+  - ![image-20220115192044967](..//pic//image-20220115192044967.png)
 
 - 配置
 
-  - ![image-20220115194004451](C:\Users\BDA\Documents\Note\pic\image-20220115194004451.png)
+  - ![image-20220115194004451](..//pic//image-20220115194004451.png)
 
 - 使用
 
@@ -142,7 +142,7 @@ keywords: [mybatis, db]
       PageHelper.startPage(第几页,一页几条数据);
       ```
 
-  - ![image-20220115220614663](C:\Users\BDA\Documents\Note\pic\image-20220115220614663.png)
+  - ![image-20220115220614663](..//pic//image-20220115220614663.png)
 
 ## 多表操作
 
@@ -150,48 +150,48 @@ keywords: [mybatis, db]
 
 将查询的结果和实体中的元素一一对应
 
-![image-20220115230034427](C:\Users\BDA\Documents\Note\pic\image-20220115230034427.png)
+![image-20220115230034427](..//pic//image-20220115230034427.png)
 
 另一种写法
 
-![image-20220115230713501](C:\Users\BDA\Documents\Note\pic\image-20220115230713501.png)
+![image-20220115230713501](..//pic//image-20220115230713501.png)
 
 ### 一对多
 
-![image-20220115235315315](C:\Users\BDA\Documents\Note\pic\image-20220115235315315.png)
+![image-20220115235315315](..//pic//image-20220115235315315.png)
 
 ### 多对多
 
-​	![image-20220116093848663](C:\Users\BDA\Documents\Note\pic\image-20220116093848663.png)
+​	![image-20220116093848663](..//pic//image-20220116093848663.png)
 
 ## 注解开发
 
-![image-20220116094116313](C:\Users\BDA\Documents\Note\pic\image-20220116094116313.png)
+![image-20220116094116313](..//pic//image-20220116094116313.png)
 
 ### 步骤
 
 - 在接口上写注解，在注解中写sql语句
-- 在mybatis.xml 中配置映射关系![image-20220116100229537](C:\Users\BDA\Documents\Note\pic\image-20220116100229537.png)
+- 在mybatis.xml 中配置映射关系![image-20220116100229537](..//pic//image-20220116100229537.png)
 
 ### 一对一
 
-![image-20220116112244407](C:\Users\BDA\Documents\Note\pic\image-20220116112244407.png)
+![image-20220116112244407](..//pic//image-20220116112244407.png)
 
 方式二
 
-![image-20220116112337018](C:\Users\BDA\Documents\Note\pic\image-20220116112337018.png)
+![image-20220116112337018](..//pic//image-20220116112337018.png)
 
 ### 一对多
 
-![image-20220116114540981](C:\Users\BDA\Documents\Note\pic\image-20220116114540981.png)
+![image-20220116114540981](..//pic//image-20220116114540981.png)
 
-![image-20220116114638002](C:\Users\BDA\Documents\Note\pic\image-20220116114638002.png)
+![image-20220116114638002](..//pic//image-20220116114638002.png)
 
 ### 多对多
 
-![image-20220116115750164](C:\Users\BDA\Documents\Note\pic\image-20220116115750164.png)
+![image-20220116115750164](..//pic//image-20220116115750164.png)
 
-![image-20220116115809117](C:\Users\BDA\Documents\Note\pic\image-20220116115809117.png)
+![image-20220116115809117](..//pic//image-20220116115809117.png)
 
 # MyBatisPlus
 
@@ -542,46 +542,46 @@ public void genCode() {
 - selectList(wrapper)      查询全部记录
 - selectPage(page,wrapper)    分页查询
   - 在配置类中配置分页插件
-    - ![image-20220116223437589](C:\Users\BDA\Documents\Note\pic\image-20220116223437589.png)
+    - ![image-20220116223437589](..//pic//image-20220116223437589.png)
   - 创建一个Page<User>对象     
 
 ###  配置
 
 - ConfigLocation
 
-![image-20220117020109642](C:\Users\BDA\Documents\Note\pic\image-20220117020109642.png)
+![image-20220117020109642](..//pic//image-20220117020109642.png)
 
 - MapperLocations  自定义sql语句
 
-![image-20220117020519130](C:\Users\BDA\Documents\Note\pic\image-20220117020519130.png)
+![image-20220117020519130](..//pic//image-20220117020519130.png)
 
 - TypeAliasesPackage         全局包扫描路径，别名扫描
 
-![image-20220117020925098](C:\Users\BDA\Documents\Note\pic\image-20220117020925098.png)
+![image-20220117020925098](..//pic//image-20220117020925098.png)
 
 - MapUnderscoreToCamelCase         驼峰命名自动映射
   - 在mybatis 中默认是false的，plus 中默认是true的
-  - ![image-20220117022359340](C:\Users\BDA\Documents\Note\pic\image-20220117022359340.png)
+  - ![image-20220117022359340](..//pic//image-20220117022359340.png)
 - CacheEnabled    缓存
   - 默认是true 
-  - ![image-20220117022409501](C:\Users\BDA\Documents\Note\pic\image-20220117022409501.png)
+  - ![image-20220117022409501](..//pic//image-20220117022409501.png)
 
 ### DB策略
 
 - idType
   - 设置全局默认主键类型
-  - ![image-20220117022435398](C:\Users\BDA\Documents\Note\pic\image-20220117022435398.png)
+  - ![image-20220117022435398](..//pic//image-20220117022435398.png)
 - tablePrefix
   - 设置表名前缀
-  - ![image-20220117022902070](C:\Users\BDA\Documents\Note\pic\image-20220117022902070.png)
+  - ![image-20220117022902070](..//pic//image-20220117022902070.png)
 
 ## 常见问题
 
 ### 找不到resource下的文件，在pom以下内容
 
-![image-20220114232916497](C:\Users\BDA\Documents\Note\pic\image-20220114232916497.png)
+![image-20220114232916497](..//pic//image-20220114232916497.png)
 
-![image-20220116161753476](C:\Users\BDA\Documents\Note\pic\image-20220116161753476.png)
+![image-20220116161753476](..//pic//image-20220116161753476.png)
 
 ### 插入数据时id自增长异常
 

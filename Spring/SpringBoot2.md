@@ -1,7 +1,6 @@
 ---
-title: SpringBoot2学习手册
-categories: Spring
-tags: SpringBoot2
+title: SpringBoot
+keywords: [spring, springboot]
 ---
 
 ## SpringBoot2的特点
@@ -276,10 +275,10 @@ public class HelloController {
 
 - 使用mybatis-plus 实现CRUD，然后测试
 - 开启mp运行日志
-  - ![image-20220121103834129](C:\Users\BDA\Documents\Note\pic\image-20220121103834129.png)
+  - ![image-20220121103834129](..//pic//image-20220121103834129.png)
 - 配置分页设置
   - 创建一个mp的配置类 MPConfig
-    - ![image-20220121104135610](C:\Users\BDA\Documents\Note\pic\image-20220121104135610.png)
+    - ![image-20220121104135610](..//pic//image-20220121104135610.png)
       - MybatisPlusInterceptor是MP的拦截器
       - PaginationInnerInterceptor是分页内部拦截器
 
@@ -296,9 +295,9 @@ public class HelloController {
 - 测试
 - 为了简便以上繁琐的开发，Mp提供了一套快速开发
   - 创建实体类对应的接口继承 ==IService<T>== 类
-    - ![image-20220121131707505](C:\Users\BDA\Documents\Note\pic\image-20220121131707505.png)
+    - ![image-20220121131707505](..//pic//image-20220121131707505.png)
   - 创建对应的实现类继承 ==ServiceImpl<K, V>== 实现对应的接口
-    - ![image-20220121132705036](C:\Users\BDA\Documents\Note\pic\image-20220121132705036.png)
+    - ![image-20220121132705036](..//pic//image-20220121132705036.png)
 
 ### 表现层（controller）
 
@@ -362,7 +361,7 @@ public class HelloController {
 
 ### 复制模块
 
-![image-20220118141414868](C:\Users\BDA\Documents\Note\pic\image-20220118141414868.png)
+![image-20220118141414868](..//pic//image-20220118141414868.png)
 
 ## 注意
 
@@ -371,7 +370,7 @@ public class HelloController {
 
 ## 运维实用
 
-![image-20220121183317113](C:\Users\BDA\Documents\Note\pic\image-20220121183317113.png)
+![image-20220121183317113](..//pic//image-20220121183317113.png)
 
 ### 修改端口号
 
@@ -417,10 +416,10 @@ public class HelloController {
       - 需要同时添加lombok
   
 - 配置日志级别
-  - ![image-20220121230358127](C:\Users\BDA\Documents\Note\pic\image-20220121230358127.png)
+  - ![image-20220121230358127](..//pic//image-20220121230358127.png)
 
 - 日志输出格式
-  - ![image-20220122143914895](C:\Users\BDA\Documents\Note\pic\image-20220122143914895.png)
+  - ![image-20220122143914895](..//pic//image-20220122143914895.png)
     - %d：日期
     - %m：消息
     - %n：换行
@@ -438,75 +437,75 @@ public class HelloController {
 
 ### 热部署
 
-![image-20220122173257165](C:\Users\BDA\Documents\Note\pic\image-20220122173257165.png)
+![image-20220122173257165](..//pic//image-20220122173257165.png)
 
 - 开启自动启动热部署
   - Bulid -> Compiler -> Bulid project automatically
   - Settings -> Advanced Settings -> Allow auto-make to 
 
-![image-20220122174058004](C:\Users\BDA\Documents\Note\pic\image-20220122174058004.png)
+![image-20220122174058004](..//pic//image-20220122174058004.png)
 
-![image-20220122174357110](C:\Users\BDA\Documents\Note\pic\image-20220122174357110.png)
+![image-20220122174357110](..//pic//image-20220122174357110.png)
 
-![image-20220122174808490](C:\Users\BDA\Documents\Note\pic\image-20220122174808490.png)
+![image-20220122174808490](..//pic//image-20220122174808490.png)
 
 ### 高级配置
 
-![image-20220123104038852](C:\Users\BDA\Documents\Note\pic\image-20220123104038852.png)![image-20220123112457178](C:\Users\BDA\Documents\Note\pic\image-20220123112457178.png)
+![image-20220123104038852](..//pic//image-20220123104038852.png)![image-20220123112457178](..//pic//image-20220123112457178.png)
 
-![image-20220123112609439](C:\Users\BDA\Documents\Note\pic\image-20220123112609439.png)![image-20220123133559396](C:\Users\BDA\Documents\Note\pic\image-20220123133559396.png)
+![image-20220123112609439](..//pic//image-20220123112609439.png)![image-20220123133559396](..//pic//image-20220123133559396.png)
 
 ### 常用计量单位
 
-![image-20220123143054552](C:\Users\BDA\Documents\Note\pic\image-20220123143054552.png)
+![image-20220123143054552](..//pic//image-20220123143054552.png)
 
 ### Bean数据校验
 
-![image-20220123144209154](C:\Users\BDA\Documents\Note\pic\image-20220123144209154.png)
+![image-20220123144209154](..//pic//image-20220123144209154.png)
 
-![image-20220123144234511](C:\Users\BDA\Documents\Note\pic\image-20220123144234511.png)
+![image-20220123144234511](..//pic//image-20220123144234511.png)
 
-![image-20220123144250340](C:\Users\BDA\Documents\Note\pic\image-20220123144250340.png)
+![image-20220123144250340](..//pic//image-20220123144250340.png)
 
 ### 加载测试专用属性
 
-![image-20220123152043913](C:\Users\BDA\Documents\Note\pic\image-20220123152043913.png)
+![image-20220123152043913](..//pic//image-20220123152043913.png)
 
-![image-20220123152440680](C:\Users\BDA\Documents\Note\pic\image-20220123152440680.png)
+![image-20220123152440680](..//pic//image-20220123152440680.png)
 
 ### 加载测试专用配置
 
-![image-20220123153110123](C:\Users\BDA\Documents\Note\pic\image-20220123153110123.png)
+![image-20220123153110123](..//pic//image-20220123153110123.png)
 
 ### Web环境模拟测试
 
-![image-20220123154607248](C:\Users\BDA\Documents\Note\pic\image-20220123154607248.png)
+![image-20220123154607248](..//pic//image-20220123154607248.png)
 
-![image-20220123155154707](C:\Users\BDA\Documents\Note\pic\image-20220123155154707.png)
+![image-20220123155154707](..//pic//image-20220123155154707.png)
 
-![image-20220123155604329](C:\Users\BDA\Documents\Note\pic\image-20220123155604329.png)
+![image-20220123155604329](..//pic//image-20220123155604329.png)
 
-![image-20220123161447231](C:\Users\BDA\Documents\Note\pic\image-20220123161447231.png)
+![image-20220123161447231](..//pic//image-20220123161447231.png)
 
-![image-20220123161814689](C:\Users\BDA\Documents\Note\pic\image-20220123161814689.png)
+![image-20220123161814689](..//pic//image-20220123161814689.png)
 
-![image-20220123162101843](C:\Users\BDA\Documents\Note\pic\image-20220123162101843.png)
+![image-20220123162101843](..//pic//image-20220123162101843.png)
 
 ### 数据层测试事务回滚
 
-![image-20220123163912285](C:\Users\BDA\Documents\Note\pic\image-20220123163912285.png)
+![image-20220123163912285](..//pic//image-20220123163912285.png)
 
 ### 测试用例数据设定
 
-![image-20220123164608927](C:\Users\BDA\Documents\Note\pic\image-20220123164608927.png)
+![image-20220123164608927](..//pic//image-20220123164608927.png)
 
 ### 数据源配置
 
-![image-20220123165910659](C:\Users\BDA\Documents\Note\pic\image-20220123165910659.png)
+![image-20220123165910659](..//pic//image-20220123165910659.png)
 
 - 内置了JDBCTemplate
 
-![image-20220123174507600](C:\Users\BDA\Documents\Note\pic\image-20220123174507600.png)
+![image-20220123174507600](..//pic//image-20220123174507600.png)
 
 ### 读取配置
 
@@ -514,61 +513,61 @@ public class HelloController {
 
 ### 整合Redis
 
-![image-20220123183244873](C:\Users\BDA\Documents\Note\pic\image-20220123183244873.png)
+![image-20220123183244873](..//pic//image-20220123183244873.png)
 
-![image-20220123183313872](C:\Users\BDA\Documents\Note\pic\image-20220123183313872.png)
+![image-20220123183313872](..//pic//image-20220123183313872.png)
 
-![image-20220123184131259](C:\Users\BDA\Documents\Note\pic\image-20220123184131259.png)
+![image-20220123184131259](..//pic//image-20220123184131259.png)
 
-![image-20220123184636107](C:\Users\BDA\Documents\Note\pic\image-20220123184636107.png)
+![image-20220123184636107](..//pic//image-20220123184636107.png)
 
-![image-20220123184743164](C:\Users\BDA\Documents\Note\pic\image-20220123184743164.png)
+![image-20220123184743164](..//pic//image-20220123184743164.png)
 
 ### 整合MongoDB
 
-![image-20220123215753371](C:\Users\BDA\Documents\Note\pic\image-20220123215753371.png)
+![image-20220123215753371](..//pic//image-20220123215753371.png)
 
-![image-20220123215816660](C:\Users\BDA\Documents\Note\pic\image-20220123215816660.png)
+![image-20220123215816660](..//pic//image-20220123215816660.png)
 
-![image-20220123215846300](C:\Users\BDA\Documents\Note\pic\image-20220123215846300.png)
+![image-20220123215846300](..//pic//image-20220123215846300.png)
 
 ### 整合ElasticSearch
 
-![image-20220124105416259](C:\Users\BDA\Documents\Note\pic\image-20220124105416259.png)
+![image-20220124105416259](..//pic//image-20220124105416259.png)
 
-![image-20220124105452145](C:\Users\BDA\Documents\Note\pic\image-20220124105452145.png)
+![image-20220124105452145](..//pic//image-20220124105452145.png)
 
-![image-20220124110838151](C:\Users\BDA\Documents\Note\pic\image-20220124110838151.png)
+![image-20220124110838151](..//pic//image-20220124110838151.png)
 
-![image-20220124110850992](C:\Users\BDA\Documents\Note\pic\image-20220124110850992.png)
+![image-20220124110850992](..//pic//image-20220124110850992.png)
 
-![image-20220124110908512](C:\Users\BDA\Documents\Note\pic\image-20220124110908512.png)
+![image-20220124110908512](..//pic//image-20220124110908512.png)
 
-![image-20220124110928433](C:\Users\BDA\Documents\Note\pic\image-20220124110928433.png)
+![image-20220124110928433](..//pic//image-20220124110928433.png)
 
 ### 默认的缓存方案
 
-![image-20220124120543131](C:\Users\BDA\Documents\Note\pic\image-20220124120543131.png)
+![image-20220124120543131](..//pic//image-20220124120543131.png)
 
-![image-20220124120602179](C:\Users\BDA\Documents\Note\pic\image-20220124120602179.png)
+![image-20220124120602179](..//pic//image-20220124120602179.png)
 
-![image-20220124120609718](C:\Users\BDA\Documents\Note\pic\image-20220124120609718.png)
+![image-20220124120609718](..//pic//image-20220124120609718.png)
 
 ### 整合Ehcache
 
-![image-20220124143014510](C:\Users\BDA\Documents\Note\pic\image-20220124143014510.png)
+![image-20220124143014510](..//pic//image-20220124143014510.png)
 
-![image-20220124143058876](C:\Users\BDA\Documents\Note\pic\image-20220124143058876.png)
+![image-20220124143058876](..//pic//image-20220124143058876.png)
 
-![image-20220124143125540](C:\Users\BDA\Documents\Note\pic\image-20220124143125540.png)
+![image-20220124143125540](..//pic//image-20220124143125540.png)
 
 ### 整合Redis缓存
 
-![image-20220124143936988](C:\Users\BDA\Documents\Note\pic\image-20220124143936988.png)
+![image-20220124143936988](..//pic//image-20220124143936988.png)
 
-![image-20220124144000676](C:\Users\BDA\Documents\Note\pic\image-20220124144000676.png)
+![image-20220124144000676](..//pic//image-20220124144000676.png)
 
-![image-20220124144012503](C:\Users\BDA\Documents\Note\pic\image-20220124144012503.png)
+![image-20220124144012503](..//pic//image-20220124144012503.png)
 
 ## 注解
 

@@ -1,3 +1,10 @@
+---
+title: Spring5
+keywords: [spring]
+---
+
+
+
 # IOC
 
 ## 是什么
@@ -641,5 +648,4 @@ A中调用B
 
 - 与SpringMVC基本一致，使用到的组件不同
 - 使用的是DispatchHandler
-
 
