@@ -56,7 +56,7 @@ keywords: [middle]
   - 组织协调者
   - 收集Broker的工作情况
 - Broker
-  - RocketMQ的核心，负责消息的发送，接收，高可用等（是真正干活的）
+  - ..//pic//的核心，负责消息的发送，接收，高可用等（是真正干活的）
   - 需要定时发送自身情况到NameServer，10秒发送一次，超过2分钟没发，NameServer会认为该Broker失效
 - Topic
   - 在Broker中
@@ -104,7 +104,7 @@ public static void CreateTopic(){
 
 ## 分布式事务消息
 
-![image-20220725004549050](RocketMQ/image-20220725004549050.png)
+![image-20220725004549050](..//pic///image-20220725004549050.png)
 
 - 生产者
   - 使用TransactionMQProducer，设置NamesrvAddr，设置事务监听器（TransactionListener），需要传入事务监听器实现类
@@ -115,28 +115,28 @@ public static void CreateTopic(){
 
 ### 使用Spring
 
-- 实现`RocketMQLocalTransactionListener` 接口
+- 实现`..//pic//LocalTransactionListener` 接口
 
-- 添加`@RocketMQTransactionListener(txProducerGroup = "生产者组名")`
+- 添加`@..//pic//TransactionListener(txProducerGroup = "生产者组名")`
 
 - 保存事务的状态
 
   - ```java
-    public class XXX implements RocketMQLocalTransactionListener{
-        private static Map<String, RocketMQLocalTransactionState> STATE_MAP = new HashMap<>();
+    public class XXX implements ..//pic//LocalTransactionListener{
+        private static Map<String, ..//pic//LocalTransactionState> STATE_MAP = new HashMap<>();
         
         @Override
-        public RocketMQLocalTransactionState executeLocalTransaction(Message message, Object o){
+        public ..//pic//LocalTransactionState executeLocalTransaction(Message message, Object o){
             
         }
     }
     ```
 
-- ![image-20220726225310037](RocketMQ/image-20220726225310037.png)
+- ![image-20220726225310037](..//pic///image-20220726225310037.png)
 
-- 生产者![image-20220726225617808](RocketMQ/image-20220726225617808.png)
+- 生产者![image-20220726225617808](..//pic///image-20220726225617808.png)
 
-- 消费者![image-20220726225741449](RocketMQ/image-20220726225741449.png)
+- 消费者![image-20220726225741449](..//pic///image-20220726225741449.png)
 
 ### 应用场景
 
@@ -151,7 +151,7 @@ public static void CreateTopic(){
 - pull模式
   - 客户端轮询服务端，有消息就拉取，存在实时性问题
 - 长轮询
-  - RocketMQ使用长轮询解决了push和pull的问题，即长连接+轮询
+  - ..//pic//使用长轮询解决了push和pull的问题，即长连接+轮询
 
 ### 消息模式
 
@@ -165,7 +165,7 @@ public static void CreateTopic(){
 
 - 消费端处理业务保证幂等性
 - 每条消息都有唯一的编号，判断消息是否处理过即可
-- RocketMQ不保证消息不重复，需要在业务端处理
+- ..//pic//不保证消息不重复，需要在业务端处理
 
 ## 数据存储
 
@@ -217,11 +217,11 @@ public static void CreateTopic(){
 
 ### 集群搭建
 
-- ![image-20220726152658071](RocketMQ/image-20220726152658071.png)
-- ![image-20220726152811139](RocketMQ/image-20220726152811139.png)![image-20220726152822328](RocketMQ/image-20220726152822328.png)
-- ![image-20220726153353385](RocketMQ/image-20220726153353385.png)
-- ![image-20220726153428809](RocketMQ/image-20220726153428809.png)![image-20220726153436277](RocketMQ/image-20220726153436277.png)
-- ![image-20220726153450253](RocketMQ/image-20220726153450253.png)
+- ![image-20220726152658071](..//pic///image-20220726152658071.png)
+- ![image-20220726152811139](..//pic///image-20220726152811139.png)![image-20220726152822328](..//pic///image-20220726152822328.png)
+- ![image-20220726153353385](..//pic///image-20220726153353385.png)
+- ![image-20220726153428809](..//pic///image-20220726153428809.png)![image-20220726153436277](..//pic///image-20220726153436277.png)
+- ![image-20220726153450253](..//pic///image-20220726153450253.png)
 
 ### 两阶段提交
 
@@ -229,19 +229,19 @@ public static void CreateTopic(){
 
 ## SpringBoot整合RokcetMQ
 
-![image-20220726154035749](RocketMQ/image-20220726154035749.png)
+![image-20220726154035749](..//pic///image-20220726154035749.png)
 
-![image-20220726154120005](RocketMQ/image-20220726154120005.png)
+![image-20220726154120005](..//pic///image-20220726154120005.png)
 
 ### 生产者
 
-![image-20220726154438110](RocketMQ/image-20220726154438110.png)
+![image-20220726154438110](..//pic///image-20220726154438110.png)
 
 使用同步发送或者异步发送才能获取发送消息后的结果信息
 
 ### 消费者
 
-![image-20220726154819917](RocketMQ/image-20220726154819917.png)
+![image-20220726154819917](..//pic///image-20220726154819917.png)
 
 # RabbitMQ
 
@@ -253,6 +253,6 @@ public static void CreateTopic(){
 ## 生产者确认机制（Publisher Confirm）
 
 - 新版本扩展
-- 类似RocketMQ的事务消息基本一致
+- 类似..//pic//的事务消息基本一致
 
 # Kafka

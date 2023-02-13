@@ -149,15 +149,15 @@ keywords: [interview]
 
 ### spring如何处理线程并发问题
 
-![image-20220406164345074](..\pic\image-20220406164345074.png)
+![image-20220406164345074](..//pic//image-20220406164345074.png)
 
 ### @Component、Controller、Service、Repository的区别 
 
-![image-20220406164522780](..\pic\image-20220406164522780.png)
+![image-20220406164522780](..//pic//image-20220406164522780.png)
 
 ### @Autowired和@Resource的区别
 
-![image-20220406164653753](..\pic\image-20220406164653753.png)
+![image-20220406164653753](..//pic//image-20220406164653753.png)
 
 ### 怎么解决循环依赖
 
@@ -208,7 +208,7 @@ keywords: [interview]
 
 ### BeanFactory 和 FactoryBean有什么区别
 
-- ![image-20220316172333995](..\pic\image-20220316172333995.png)
+- ![image-20220316172333995](..//pic//image-20220316172333995.png)
 
 ### Spring中用到的设计模式
 
@@ -256,7 +256,7 @@ keywords: [interview]
 
 ### 什么是Spring Profiles
 
-![image-20220406165205311](..\pic\image-20220406165205311.png)
+![image-20220406165205311](..//pic//image-20220406165205311.png)
 
 ## SpringMVC
 
@@ -305,7 +305,7 @@ keywords: [interview]
 
 ### SpringBoot如何解决跨域问题
 
-![image-20220406165240221](..\pic\image-20220406165240221.png)
+![image-20220406165240221](..//pic//image-20220406165240221.png)
 
 ## Mybatis
 

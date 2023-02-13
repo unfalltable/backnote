@@ -545,13 +545,13 @@ Integer result = task.get();
 ### Executors(工厂类)
 
 - **newCachedThreadPool**
-  - ![image-20220317174010061](..\pic\image-20220317174010061.png)
+  - ![image-20220317174010061](..//pic//image-20220317174010061.png)
   - 创建一个全部都是救急线程的线程池，大小为Integer最大值，存活60s
   - 队列采用了**SynchronizedQueue**，这个队列没有容量，线程来取是做交换
   - **适用于任务数密集，耗时较短的任务**
 
 - **newFixedThreadPool**
-  - ![image-20220317173041361](..\pic\image-20220317173041361.png)
+  - ![image-20220317173041361](..//pic//image-20220317173041361.png)
   - 创建一个固定大小的线程池，**全都是核心线程**，无需超时时间，**阻塞队列是无界**的，可以放任意数量的任务
   - **适用于任务量已知，相对耗时的任务**
 
@@ -561,7 +561,7 @@ Integer result = task.get();
   - scheduleAtFixedRate()  以固定的时间执行线程
   - scheduleWithFixedDelay()  每个任务直接间隔固定时间
 - **newSingleThreadExecutor**
-  - ![image-20220317174618710](..\pic\image-20220317174618710.png)
+  - ![image-20220317174618710](..//pic//image-20220317174618710.png)
   - 线程数固定为1，多个任务排队执行，阻塞队列无界
   - 返回的是FinalizableDelegatedExecutorService,只对外暴露了自定义的方法，不能调用其他方法，运用到装饰器模式
   - 保证始终有一个线程在执行
@@ -569,7 +569,7 @@ Integer result = task.get();
 
 ### ThreadPoolExecutor(实现类)
 
-![image-20220317165730143](..\pic\image-20220317165730143.png)
+![image-20220317165730143](..//pic//image-20220317165730143.png)
 
 - 用int的高3位来表示线程池的状态，低29为表示线程数量
 
