@@ -1,3 +1,3 @@
 git add .
 git commit -m 'm'
-git push back master \t
+echo git push back master 
