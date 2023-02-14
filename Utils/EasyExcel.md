@@ -1,18 +1,9 @@
----
-title: EasyExcel
-keywords: [util]
----
-
-
-
 ## POI和JXL的问题
 
 - 内存占用大，有内存溢出风险
 - 学习成本高，实现复杂
 
 ## POI和EasyExcel的工作原理
-
-![image-20221016145115854](..//pic//image-20221016145115854.png)
 
 ## Excel导入
 
