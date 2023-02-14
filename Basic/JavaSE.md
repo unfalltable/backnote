@@ -1794,7 +1794,7 @@ Stream.of(数组)
 
 ## 动态代理
 
-![image-20210219132858763](C:\Users\15630\AppData\Roaming\Typora\typora-user-images\image-20210219132858763.png)
+![image-20210219132858763](..//pic//image-20210219132858763.png)
 
 ​	实现类又称被代理类
 
