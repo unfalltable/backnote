@@ -1,6 +1,9 @@
 ---
 title: JavaSe
 keywords: [Java, basic]
+group:
+  title: 11111
+  order: 1
 ---
 
 ## 面向对象
@@ -42,7 +45,7 @@ keywords: [Java, basic]
 - 只能修饰变量
 - 当这个变量可以通过其他变量来获得时就可以不参加序列化，即添加transient修饰
   - 例如：三角形的长，宽，面积，则面积可以不参与序列化
-  - Logger对象也bu'xu'ya
+  - Logger对象也不需要
 
 #### static
 
