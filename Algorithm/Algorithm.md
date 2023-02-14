@@ -3,6 +3,10 @@ title: 算法
 keywords: [algorithm] 
 ---
 
+# 排序
+
+## 快速排序
+
 # 递归
 
 # 图
