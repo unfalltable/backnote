@@ -1,3 +1,4 @@
+cd C:\Users\BDA\Documents\Note\back
 git add .
 git commit -m 'm'
-echo git push back master 
+git push back master 
