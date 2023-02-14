@@ -1610,8 +1610,6 @@ Stream.of(数组)
 
 ### 内部原理
 
-![image-20210216224506635](C:\Users\15630\AppData\Roaming\Typora\typora-user-images\image-20210216224506635.png)
-
 ### 功能
 
 1. #### 获取Class对象

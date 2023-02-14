@@ -25,7 +25,6 @@ keywords: [basic]
 - 可以用做取模运算
 - 把一个不等于0的数最右侧的1提取出来
   - A = a & ~a + 1
-  - ![image-20220125203318828](C:\Users\15630\AppData\Roaming\Typora\typora-user-images\image-20220125203318826.png)
 
 
 ### 乘除 / 左移右移
