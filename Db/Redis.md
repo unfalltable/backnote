@@ -315,15 +315,7 @@ keywords: [redis, db]
 
 ## Redission
 
-![image-20220401155239394](C:\Users\15630\AppData\Roaming\Typora\typora-user-images\image-20220401155239394.png)
-
-![image-20220401155329132](C:\Users\15630\AppData\Roaming\Typora\typora-user-images\image-20220401155329132.png)
-
-![image-20220401173919236](C:\Users\15630\AppData\Roaming\Typora\typora-user-images\image-20220401173919236.png)
-
 ### 可重入原理
-
-![image-20220401161111602](C:\Users\15630\AppData\Roaming\Typora\typora-user-images\image-20220401161111602.png)
 
 - 使用hash结构来记录获取锁的线程，value记录的是重入的次数
 - 内部还是实现的lua脚本
@@ -375,73 +367,23 @@ keywords: [redis, db]
 
 ## 分布式缓存
 
-![image-20220329203307740](C:\Users\15630\AppData\Roaming\Typora\typora-user-images\image-20220329203307740.png)
-
-![image-20220329203323704](C:\Users\15630\AppData\Roaming\Typora\typora-user-images\image-20220329203323704.png)
-
-![image-20220329203418579](C:\Users\15630\AppData\Roaming\Typora\typora-user-images\image-20220329203418579.png)
-
-![image-20220329204015067](C:\Users\15630\AppData\Roaming\Typora\typora-user-images\image-20220329204015067.png)
-
-![image-20220329204031572](C:\Users\15630\AppData\Roaming\Typora\typora-user-images\image-20220329204031572.png)
-
 ### 主从集群
 
 ### 分片集群
 
-![image-20220330125146094](C:\Users\15630\AppData\Roaming\Typora\typora-user-images\image-20220330125146094.png)
-
-![image-20220330125315463](C:\Users\15630\AppData\Roaming\Typora\typora-user-images\image-20220330125315463.png)
-
-![image-20220330125450299](C:\Users\15630\AppData\Roaming\Typora\typora-user-images\image-20220330125450299.png)
-
-![image-20220330131301810](C:\Users\15630\AppData\Roaming\Typora\typora-user-images\image-20220330131301810.png)
-
-![image-20220330131331212](C:\Users\15630\AppData\Roaming\Typora\typora-user-images\image-20220330131331212.png)
-
 ## 多级缓存
-
-![image-20220330132321207](C:\Users\15630\AppData\Roaming\Typora\typora-user-images\image-20220330132321207.png)
 
 ### JVM进程缓存
 
 #### Caffeine
 
-![image-20220330135327951](C:\Users\15630\AppData\Roaming\Typora\typora-user-images\image-20220330135327951.png)![image-20220330135352775](C:\Users\15630\AppData\Roaming\Typora\typora-user-images\image-20220330135352775.png)
-
 ### Nginx本地缓存
 
 #### Lua
 
-![image-20220330141552483](C:\Users\15630\AppData\Roaming\Typora\typora-user-images\image-20220330141552483.png)
-
-![image-20220330141537134](C:\Users\15630\AppData\Roaming\Typora\typora-user-images\image-20220330141537134.png)
-
-![image-20220330141703838](C:\Users\15630\AppData\Roaming\Typora\typora-user-images\image-20220330141703838.png)
-
-![image-20220330141851977](C:\Users\15630\AppData\Roaming\Typora\typora-user-images\image-20220330141851977.png)
-
-![image-20220330142107745](C:\Users\15630\AppData\Roaming\Typora\typora-user-images\image-20220330142107745.png)
-
 ### OpenResty
-
-![image-20220330144931713](C:\Users\15630\AppData\Roaming\Typora\typora-user-images\image-20220330144931713.png)
 
 ## 最佳实践
 
-![image-20220330150035009](C:\Users\15630\AppData\Roaming\Typora\typora-user-images\image-20220330150035009.png)
-
-![image-20220330150759295](C:\Users\15630\AppData\Roaming\Typora\typora-user-images\image-20220330150759295.png)
-
-![image-20220330151145902](C:\Users\15630\AppData\Roaming\Typora\typora-user-images\image-20220330151145902.png)
-
-![image-20220330152409592](C:\Users\15630\AppData\Roaming\Typora\typora-user-images\image-20220330152409592.png)
-
-![image-20220330153631399](C:\Users\15630\AppData\Roaming\Typora\typora-user-images\image-20220330153631399.png)
-
 ### 批处理
-
-![image-20220330155621974](C:\Users\15630\AppData\Roaming\Typora\typora-user-images\image-20220330155621974.png)
-
-![image-20220330155737319](C:\Users\15630\AppData\Roaming\Typora\typora-user-images\image-20220330155737319.png)
 
