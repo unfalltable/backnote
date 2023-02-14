@@ -2,5 +2,6 @@
 title: 简介
 order: -1
 nav:
-  title: 源码解析
+  title: 源码
+  order: 6
 ---
