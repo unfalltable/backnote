@@ -5,8 +5,6 @@
 
 ## POI和EasyExcel的工作原理
 
-![image-20221016145115854](C:\Users\BDA\AppData\Roaming\Typora\typora-user-images\image-20221016145115854.png)
-
 ## Excel导入
 
 ### 文件上传
