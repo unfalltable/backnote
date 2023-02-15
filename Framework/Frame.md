@@ -243,6 +243,8 @@ public class R<T> implements Serializable {
 
 ## 分页处理
 
+### 分页入参处理
+
 ```java
 public class PageFactory {
 
@@ -268,6 +270,28 @@ public class PageFactory {
             p = request.getParameter(CommonConstants.PAGE_CURRENT);
         }
         return new Page<T>(Convert.toInt(p, CommonConstants.PAGE_CURRENT_DEFAULT), Convert.toInt(ps, CommonConstants.PAGE_SIZE_DEFAULT));
+    }
+}
+```
+
+### 分页返回处理
+
+```java
+public class PageUtils {
+    public static <S, T> IPage<T> covert(IPage<S> s, Class<T> t, Function<S, T> convert) {
+        Objects.requireNonNull(s);
+        Page<T> page = new Page<>(s.getCurrent(), s.getSize(), s.getTotal());
+        page.setPages(s.getPages());
+        List<S> data = s.getRecords();
+        page.setRecords(data.stream().map(convert).collect(Collectors.toList()));
+        return page;
+    }
+    public static <S, T> IPage<T> covert(IPage<S> s, List<S> data, Class<T> t, Function<S, T> convert) {
+        Objects.requireNonNull(s);
+        Objects.requireNonNull(data);
+        Page<T> page = new Page<>(s.getCurrent(), s.getSize(), data.size());
+        page.setRecords(data.stream().map(convert).collect(Collectors.toList()));
+        return page;
     }
 }
 ```

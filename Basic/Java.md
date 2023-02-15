@@ -204,13 +204,13 @@ keywords: [Java, basic]
     ```
 
 
-- add(E e)、addAll(Collection<? extends E> c)
+- add(T e)、addAll(Collection<? extends T> c)
   
   - 检查剩余空间是否需要扩容，modCount++
   - 添加到数组末尾
   - 更新size
   
-- add(int index, E element)、addAll(int index, Collection<? extends E> c)
+- add(int index, T element)、addAll(int index, Collection<? extends T> c)
 
   - 检查下标是否越界
   - 检查剩余空间是否需要扩容，modCount++
@@ -218,7 +218,7 @@ keywords: [Java, basic]
   - 然后在插入区间插入新增的元素
   - 更新size
 
-- set(int index, E element)
+- set(int index, T element)
 
   - 检查下标是否越界
   - 保存老值，新值插入index位置
@@ -289,10 +289,10 @@ keywords: [Java, basic]
 - get(int index)
   - 检查下标是否合法，是否越界
   - 返回 node(index).item
-- set(int index, E element)
+- set(int index, T element)
   - 判断下标是否合法，是否越界
   - Node x = node(index) 
-  - E oldVal = x.item
+  - T oldVal = x.item
   - x.item = element
   - return  oldVal 
 - remove(Object o)
@@ -345,14 +345,14 @@ keywords: [Java, basic]
   - size--
   - modCount++
   - 返回被删除的值 element
-- add(E e)
+- add(T e)
   - 调用 linkLast(e)
   - 返回 true
-- add(int index, E element)
+- add(int index, T element)
   - 判断下标是否合法，是否越界
   - 如果 下标 = size，说明是在链表最后插入，调用 linkLast(element)
   - 下标 != size，则调用 linkBefore(element, node(index))
-- linkLast(E e)
+- linkLast(T e)
   - 定义两个常量保存 尾节点 l，新节点 newNode（根据 e 创建）
   - last = newNode
   - 判断 l 是否为 null
@@ -369,11 +369,11 @@ keywords: [Java, basic]
       - x = last
       - for x = x.prev
 
-- addAll(Collection<? extends E> c)
+- addAll(Collection<? extends T> c)
 
   - 调用addAll(size, c) 实现
 
-- addAll(int index, Collection<? extends E> c)
+- addAll(int index, Collection<? extends T> c)
 
   - 判断下标是否合法
   - 将集合c转化为Object数组 a
@@ -384,7 +384,7 @@ keywords: [Java, basic]
     - 不等于，则 succ = node(index)，pred = succ.prev
 
   - 遍历 for (Object o : a) 
-    - E e = (E) o      强制类型转换
+    - T e = (T) o      强制类型转换
     - 根据值和前驱 pred 创建节点 newNode 
     - 判断 pred 是否为 null
       - 为 null，则 first = newNode
@@ -447,16 +447,16 @@ keywords: [Java, basic]
 
   - 调用 removeFirst()
 
-- offer(E e)
+- offer(T e)
 
   - add(e)
 
-- offerLast(E e)
+- offerLast(T e)
 
   - 调用 addLast(e)
   - 返回 true
 
-- push(E e)
+- push(T e)
 
   - 调用 addFirst(e)
 
@@ -482,12 +482,12 @@ keywords: [Java, basic]
 
 #### 源码
 
-- addFirst(E e)
+- addFirst(T e)
   - 判断 e 是否为null，为 null 就抛异常
   - 就是在 head 之前插入，插入后head-1
     - elements [ head = (head - 1) & (elements.length - 1) ] = e
   - 判断是否需要扩容， 如果 head == tail 就需要扩容
-- addLast(E e)
+- addLast(T e)
   - 判断 e 是否为null，为 null 就抛异常
   - 就是在 tail 的位置插入，插入后 tail+1
     - elements[tail] = e
@@ -546,10 +546,10 @@ keywords: [Java, basic]
 
 #### 源码
 
-- add(E e)、offer(E e)
+- add(T e)、offer(T e)
 
   - ```java
-    public boolean offer(E e) {
+    public boolean offer(T e) {
         if (e == null)//不允许放入null元素
             throw new NullPointerException();
         modCount++;
@@ -565,14 +565,14 @@ keywords: [Java, basic]
     }
     ```
 
-- siftUp(int k, E x)
+- siftUp(int k, T x)
 
   - ```java
-    private void siftUp(int k, E x) {
+    private void siftUp(int k, T x) {
         while (k > 0) {
             int parent = (k - 1) >>> 1;//parentNo = (nodeNo-1)/2
             Object e = queue[parent];//取得父节点的值e
-            if (comparator.compare(x, (E) e) >= 0)//调用比较器的比较方法
+            if (comparator.compare(x, (T) e) >= 0)//调用比较器的比较方法
                 break;// x 大于 e 则不用交换了，直接退出
             queue[k] = e;
             k = parent;
@@ -584,18 +584,18 @@ keywords: [Java, basic]
 - element()、peek()
 
   - 如果 size =  0，返回 null
-  - 返回 (E) queue[ 0 ]
+  - 返回 (T) queue[ 0 ]
 
 - remove()、poll()
 
   - ```java
-    public E poll() {
+    public T poll() {
         if (size == 0)
             return null;
         int s = --size;
         modCount++;
-        E result = (E) queue[0];//0下标处的那个元素就是最小的那个
-        E x = (E) queue[s];
+        T result = (T) queue[0];//0下标处的那个元素就是最小的那个
+        T x = (T) queue[s];
         queue[s] = null;
         if (s != 0)
             siftDown(0, x);//调整
@@ -603,7 +603,7 @@ keywords: [Java, basic]
     }
     ```
 
-- siftDown(int k, E x)
+- siftDown(int k, T x)
 
   - 得到 size 的一半 half
 
@@ -619,7 +619,7 @@ keywords: [Java, basic]
   - queue[ k ] = x
 
   - ```java
-    private void siftDown(int k, E x) {
+    private void siftDown(int k, T x) {
         int half = size >>> 1;
         while (k < half) {
         	//首先找到左右孩子中较小的那个，记录到c里，并用child记录其下标
@@ -627,9 +627,9 @@ keywords: [Java, basic]
             Object c = queue[child];
             int right = child + 1;
             if (right < size &&
-                comparator.compare((E) c, (E) queue[right]) > 0)
+                comparator.compare((T) c, (T) queue[right]) > 0)
                 c = queue[child = right];
-            if (comparator.compare(x, (E) c) <= 0)
+            if (comparator.compare(x, (T) c) <= 0)
                 break;
             queue[k] = c;//然后用c取代原来的值
             k = child;
@@ -665,7 +665,7 @@ keywords: [Java, basic]
         if (s == i) //情况1
             queue[i] = null;
         else {
-            E moved = (E) queue[s];
+            T moved = (T) queue[s];
             queue[s] = null;
             siftDown(i, moved);//情况2
             ......
