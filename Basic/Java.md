@@ -139,7 +139,7 @@ keywords: [Java, basic]
 
 - 知识点
   - Vector是同步的 单线程速度慢 早期使用Elements遍历集合
-  - Elements的返回值是Enumeration<E>（向量/枚举）
+  - Elements的返回值是Enumeration\<E\>（向量/枚举）
     - Enumeration接口是迭代器前身
       - hasMoreElements()   判断集合是否有下一个元素
       - nextElement()       取出集合元素
@@ -423,8 +423,6 @@ toString()                     返回当前枚举类对象常量的名称
   - String strs[]//字符数组 			   
 
 - 格式: public @interface 注解名称{}
-
-- 注意：
 
 ### 元注解
 
