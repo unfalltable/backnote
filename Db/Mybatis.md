@@ -475,9 +475,9 @@ public void genCode() {
 
 ## Wrapper
 
-- QueryWrapper<User>
+- QueryWrapper\<User>
 
-- UpdateWrapper<User>
+- UpdateWrapper\<User>
 
 - 基本操作字符
 
@@ -546,7 +546,7 @@ public void genCode() {
 - selectPage(page,wrapper)    分页查询
   - 在配置类中配置分页插件
     - ![image-20220116223437589](..//pic//image-20220116223437589.png)
-  - 创建一个Page<User>对象     
+  - 创建一个Page\<User>对象     
 
 ###  配置
 
@@ -621,7 +621,7 @@ public void genCode() {
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
-public class User extends Model<User> {
+public class User extends Model\<User> {
     private Long id;
     private String name;
     private Integer age;
@@ -639,11 +639,11 @@ public Boolean test(UserParam userParam){
     user.deleteById();
     //改
     user.updateById();
-    user.update(UpdateWrappers<User>对象);
+    user.update(UpdateWrappers\<User>对象);
     //查
     user.selectById();
-    user.selectOne(QueryWrappers<User>对象);
-    user.selectPage(IPage对象, QueryWrappers<User>对象);
+    user.selectOne(QueryWrappers\<User>对象);
+    user.selectPage(IPage对象, QueryWrappers\<User>对象);
 }
 ```
 
