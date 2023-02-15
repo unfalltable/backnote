@@ -1,5 +1,6 @@
 ---
 title: Redis
+toc: content
 keywords: [redis, db]
 ---
 

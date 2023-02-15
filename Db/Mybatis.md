@@ -1,5 +1,6 @@
 ---
 title: MyBatis
+toc: content
 keywords: [mybatis, db]
 ---
 
@@ -112,7 +113,7 @@ keywords: [mybatis, db]
 
 ## 配置文件深入
 
-### TypeHandlers<T>
+### TypeHandlers\<T>
 
 - T是想要转换的类型
 
@@ -614,7 +615,7 @@ public void genCode() {
 ## 实体类设计
 
 - 继承Model实现CRUD
-- 前提是需要有对应的Mapper类并基础BaseMapper<T>
+- 前提是需要有对应的Mapper类并基础BaseMapper\<T>
 
 ```java
 @Data

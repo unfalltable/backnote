@@ -1,5 +1,6 @@
 ---
 title: Postgre
+toc: content
 keywords: [postgre, db]
 ---
 

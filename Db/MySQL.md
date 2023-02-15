@@ -1,5 +1,6 @@
 ---
 title: MySQL
+toc: content
 keywords: [mysql, db]
 ---
 

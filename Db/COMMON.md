@@ -1,5 +1,6 @@
 ---
 title: 共通
+toc: content
 keywords: [common, db]
 ---
 
