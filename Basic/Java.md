@@ -261,7 +261,7 @@ keywords: [Java, basic]
 
 ### 泛型方法
 
-- public <T> T method(T t){};
+- public \<T\> T method(T t){};
 
 ## 反射（Reflect）
 
