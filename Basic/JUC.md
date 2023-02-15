@@ -640,7 +640,7 @@ Integer result = task.get();
 - 体现的是一种**分治思想**，把递归交给线程做
 - 默认会创建与cpu核心数大小相同的线程池
 
-- 需要继承**RecursiveTask**<V>（有返回结果）或**RecursiveAction**（无返回结果）
+- 需要继承**RecursiveTask**\<V>（有返回结果）或**RecursiveAction**（无返回结果）
   - 覆盖重写**compute**()方法，实现任务拆分
 - 创建**ForkJoinPoll**线程池，执行**RecursiveTask**实现类对象
 
