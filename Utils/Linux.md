@@ -75,6 +75,7 @@
 | 创建文件夹                   | mkdir                                                        |
 | 删除                         | rm -rf                                                       |
 | 重命名文件                   | mv 原文件名 新文件名                                         |
+| 查找文件                     | find                                                         |
 | rz                           | 上传文件                                                     |
 | 查找端口                     | netstat -tunlp \| grep {port}                                |
 | 根据名称查看进程             | ps -ef \| grep {进程名}                                      |

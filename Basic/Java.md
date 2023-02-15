@@ -1,9 +1,6 @@
 ---
-title: JavaSe
+title: Java
 keywords: [Java, basic]
-group:
-  title: 11111
-  order: 1
 ---
 
 ## 面向对象

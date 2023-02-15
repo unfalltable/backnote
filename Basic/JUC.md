@@ -1,9 +1,6 @@
 ---
 title: JUC并发编程
 keywords: [juc]
-group:
-  title: 22222
-  order: 2
 ---
 
 
