@@ -1,5 +1,6 @@
 ---
 title: 集群搭建
+toc: content
 keywords: [colony]
 ---
 

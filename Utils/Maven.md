@@ -1,5 +1,6 @@
 ---
 title: Maven
+toc: content
 keywords: [util]
 ---
 

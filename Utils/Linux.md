@@ -1,3 +1,9 @@
+---
+title: Linux
+toc: content
+keywords: [util]
+---
+
 # 基础
 
 - Linux的目录结构是级层式的树状目录结构

@@ -1,5 +1,6 @@
 ---
 title: 代码规范
+toc: content
 keywords: [specification]
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: 数据库性能优化
+toc: content
 keywords: [optimization, db]
 ---
 

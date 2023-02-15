@@ -1,5 +1,6 @@
 ---
 title: SQL性能优化
+toc: content
 keywords: [optimization, sql]
 ---
 

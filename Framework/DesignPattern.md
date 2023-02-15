@@ -1,5 +1,6 @@
 ---
 title: 设计模式
+toc: content
 keywords: [basic]
 ---
 

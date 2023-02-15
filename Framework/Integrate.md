@@ -1,5 +1,6 @@
 ---
 title: 组件集成
+toc: content
 keywords: [integrate]
 ---
 
@@ -15,10 +16,6 @@ keywords: [integrate]
 ```
 
 ## 权限集成
-
-```xml
-
-```
 
 ## Nacos集成
 
