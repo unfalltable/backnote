@@ -80,13 +80,13 @@ keywords: [Java, advance]
 
 ### Comparator
 
-### Supplier\\<T>		
+### Supplier\<T>		
 
 - 作用：返回一个指定类型的数据（生产型接口）
 
 - 方法：T get()
 
-### Consumer\\<T>		
+### Consumer\<T>		
 
 - 作用：用于消费数据（消费型接口）
 
