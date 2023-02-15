@@ -1,5 +1,6 @@
 ---
 title: Java
+toc: content
 keywords: [Java, basic]
 ---
 
