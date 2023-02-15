@@ -80,13 +80,13 @@ keywords: [Java, advance]
 
 ### Comparator
 
-### Supplier<T>		
+### Supplier\\<T>		
 
 - 作用：返回一个指定类型的数据（生产型接口）
 
 - 方法：T get()
 
-### Consumer<T>		
+### Consumer\\<T>		
 
 - 作用：用于消费数据（消费型接口）
 
@@ -99,7 +99,7 @@ keywords: [Java, advance]
       - consumer1会先执行
 
 
-### Predicate<T>
+### Predicate\<T>
 
 - 作用：对数据进行判断
 
@@ -150,12 +150,12 @@ keywords: [Java, advance]
 ​	1.Collection集合都可以调用默认方法Stream()来获取流
 
 ```java
-//list转Stream	List<T>
-Stream<T> stream = list.stream();
-//set转Stream	Set<T>
-Stream<T> stream = set.stream();
+//list转Stream	List\<T>
+Stream\<T> stream = list.stream();
+//set转Stream	Set\<T>
+Stream\<T> stream = set.stream();
 //map转Stream	Map<T,R>
-Stream<T> stream = map.keySet().stream();
+Stream\<T> stream = map.keySet().stream();
 Stream<R> stream = map.values().stream();
 Stream<Map.Entry<T, R>> stream = map.entrySet().stream();
 ```
