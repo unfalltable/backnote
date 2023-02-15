@@ -209,82 +209,6 @@ keywords: [Java, basic]
 - 插入时是先插入然后再判断是否超过阈值，超过则扩容
 - 1.7是先插入在扩容，1.8是先扩容在插入
 
-#### 题目
-
-- HashMap用红黑树？为什么不用AVL树 
-
-  - 用树结构主要是用来避免DoS攻击，防止链表超长时性能下降
-
-  - 红黑树插入删除快，AVL慢，因为AVL旋转次数更多，平衡和调试更难，但AVL读取快，适合读取密集型任务
-
-
-  - HashMap红黑树何时会退化？
-
-    - 当因为扩容时导致树的节点少于6时会退化为链表
-    
-    - 当删除树的节点时，主要看root，root.left，root.right，root.left.left
-      - 如果删除前以上节点还存在则不会退化为链表，反之退化
-
-
-  - HashMap树化阈值为什么为8？
-    - hash值如果足够随机，则在hash表内按泊松分布，在负载因子为0.75的情况下，链表长度超过8的概率为 6*10^-7^ 
-
-
-  - 索引如何计算？
-    - 计算对象的hashCode()，再调用HashMap的hash()方法进行第二次哈希运算，最后 & (容量 - 1) 得到索引
-      - 二次哈希值 = 原始哈希code ^ 原始哈希code>>>16
-      - 注意这里的容量必须是2的n次幂
-
-
-  - 已经有hashCode方法为什么还要提供hash方法？
-    - 为了使哈希分布更加均匀，减少哈希碰撞
-
-
-  - 容量为何是2的n次幂？
-    - 在HashMap中进行二次hash时可以用按位与运算代替掉取模运算，从而提升一定的计算性能
-
-
-  - 扩容时如何确定新位置？
-
-    - 1.8才有的优化
-      - 在扩容时会将元素的二次hash值 和 未扩容前的原始容量 进行按位与（**&**）运算
-        - 如果结果为0，表示这些元素扩容后位置不会发生改变
-        - 如果结果不为0，则表示这些元素将移动到新的位置
-        
-        - 新的位置 = 原始位置 + 原始容量
-      
-      - 会把结果为0的和结果不为0的串成两条链表，批量操作
-
-
-  - 如果容量不是2的n次幂呢？
-
-    - 容量是2的n次幂存在一个问题，当要存储的元素奇偶分布不均时，哈希分布就不那么均匀了
-
-    - 把容量设置为一个质数可以解决这个问题
-
-    - 设置为质数可以在第一次hash时就能有不错的散列分布
-
-    - 如果想要好的性能则选2的n次幂，想要更好的散列分布则选质数
-
-
-  - 扩容因子为什么默认是0.75？ 
-
-    - 在空间占用和查询时间之间取得较好的平衡
-    
-    - 大于这个值，空间节省了，但是链表较长影响性能
-    
-    - 小于这个值，冲突减少了，但链表扩容频繁，空间占用多
-
-
-  - 多线程下hashMap存在什么问题？
-
-       - jdk7有扩容死链问题
-         - 是因为1.7扩容后的链表会以头插法插入
-         - 当多个线程同时进行扩容时，一个线程扩容后次序改变了，另一个线程再扩容导致死链
-       
-        - jdk8有数据丢失问题
-          - 当多个线程同时往map的同一个位置存放数据时，容易出现覆盖丢失数据
-
 ### LinkedHashSet
 
 - 知识点
@@ -351,31 +275,37 @@ keywords: [Java, basic]
 
 1. #### 获取Class对象
 
-   * Class.forName("全类名")		将字节码文件加载进内存，返回Class对象
+   * Class.forName("全类名")		
+     * 将字节码文件加载进内存，返回Class对象
 
-     ​						多用于配置文件
+     * 多用于配置文件
 
-   * 类名.class                                通过类名获取 
+   * 类名.class                                
+     * 通过类名获取
 
-     ​						多用于参数的传递
+     * 多用于参数的传递
 
-   * 对象.getClass()                        getClass()方法在Object中定义的
-
-     ​						多用于对象的获取字节码的方式
+   * 对象.getClass()
+     * getClass()方法在Object中定义的
+     * 多用于对象的获取字节码的方式
 
 2. #### 获取成员
 
    * 获取成员变量
-     * Fleld[] getFields()											获取public修饰的成员变量
-     * field getField(String name)                    获取指定名称的public修饰的成员变量
-     * Field[] getDecLaredFields()                    获取所有的成员变量
-     * Field getDeclaredField(String name)     获取指定名称的成员变量
+     * Fleld[] getFields()											
+       * 获取public修饰的成员变量
+     * field getField(String name)                    
+       * 获取指定名称的public修饰的成员变量
+     * Field[] getDecLaredFields()                   
+       * 获取所有的成员变量
+     * Field getDeclaredField(String name)     
+       * 获取指定名称的成员变量
    * 获取构造方法
-     * Constructor<T>[] getConstructors()																		
-     * Constructor<T> getConstructor(类<?>...  parameterTypes)       
+     * Constructor<T>[] getConstructors(）
+     * Constructor<T> getConstructor(类<?>...  parameterTypes)
      * Constructor<T>[] getDeclaredConstructors()
      * Constructor<T>[] getDeclaredConstructors(类<?>...  parameterTypes)
-
+   
    * 获取成员方法
      * Method[] getMethods()
      * Method getMethods(String name,类<?>...  parameterTypes)
@@ -388,37 +318,43 @@ keywords: [Java, basic]
 
  * #### Field：成员变量
 
-   - void set(Object obj,Object value)			设置值
-   - get(Object obj)												 获取值
+   - void set(Object obj,Object value)
+     - 设置值
+   - get(Object obj)
+     - 获取值
    
 * #### Constructor：构造方法
 
-  - T newInstance(Object... initargs)			创建对象
+  - T newInstance(Object... initargs)
+    - 创建对象
 
 * #### Method：成员方法
 
-  - Object invoke(Object obj,) 				执行方法
-- String getName()									获取方法名	
+  - Object invoke(Object obj,)
+    - 执行方法
+- String getName()
+  - 获取方法名	
+
 
 ---
 
 ### 注意
 
 1. 获取访问受限的成员时需要使用暴力反射
+   - setAccessible(true)		
 
-   ​			setAccessible(true)		忽略安全检查
+   - 忽略安全检查
 
 2. 创建无参构造可以使用Class对象的方法
+   - newInstance()				
 
-   ​			newInstance()				创建无参构造方法
+   - 创建无参构造方法
 
 3. 加载配置文件，配置文件以properties结尾
+   - classLoader.getResourceAsStream("pro.Properties");读取配置文件，
+   - 返回InputStream流
+   - 通过类名.class.getClassLoader()获取ClassLoader对象
 
-   ​			classLoader.getResourceAsStream("pro.Properties");读取配置文件，
-
-   ​																	返回InputStream流
-
-   ​			通过类名.class.getClassLoader()获取ClassLoader对象
 
 ## 枚举（Enum）
 
@@ -439,11 +375,11 @@ keywords: [Java, basic]
 
 ### 常用方法
 
-	* values()									返回枚举类型的对象数组
-	* valueOf(String str)            可以把字符串转为对应的枚举对象
-	* toString()                          返回当前枚举类对象常量的名称
-
----
+```java
+* values()					   返回枚举类型的对象数组
+* valueOf(String str)            可以把字符串转为对应的枚举对象
+* toString()                     返回当前枚举类对象常量的名称
+```
 
 ## 注解（Annotation）	
 
@@ -453,51 +389,44 @@ keywords: [Java, basic]
 
 ### 作用
 
- 1. 编写文档
+  1. 编写文档
+    - javadoc   
+    - java提供的工具，可以将java文件抽取为doc文档
+    - java文件需要以ANSI格式编码才不会乱码
 
-    javadoc   java提供的工具，可以将java文件抽取为doc文档
-
-    ​	java文件需要以ANSI格式编码才不会乱码
-
- 2. 代码分析
-
- 3. 编译检查
+  2. 代码分析
+  3. 编译检查
 
 ### JDK中预定义的注解
 
-   * @Override							检测该注解标注的方法是否覆盖重写父类方法
-   * @Deprecated	               该注解标注的内容表示以过时
-     @suppressWarnings       压制警告
+   * @Override
+     * 检测该注解标注的方法是否覆盖重写父类方法
+
+   * @Deprecated
+     * 该注解标注的内容表示以过时
+
+   * @suppressWarnings
+     * 压制警告
+
 
 ### 自定义注解
 
 - 本质上就是一个接口，可以定义成员方法，成员方法的返回值有要求
 
   - 要求：基本数据类型,String,枚举,注解,以上类型的数组，使用时需要赋值
-
-    例如：
-
-    ​          int value();//如果方法只有一个且名字为value，那么使用时可以直接写值 
-
-    ​									使用时：@MyAnno(10)
-
-    ​          String name() **default** "张三"			//有默认值，使用时可以不赋值
-
-    ​			enumTest emum1();								//枚举类型
-
-    ​									使用时 emum1 = enumTest.P1
-
-    ​			MyAnno2 anno2();									//注解类型
-
-    ​									使用时	anno2 = @MyAnno2
-
-    ​			String strs[]												//字符数组 
+- 例如：
+    - int value();//如果方法只有一个且名字为value，那么使用时可以直接写值  
+  - 使用时：@MyAnno(10)
+    - String name() **default** "张三"//有默认值，使用时可以不赋值
+  - enumTest emum1();//枚举类型
+    - 使用时 emum1 = enumTest.P1
+  - MyAnno2 anno2();//注解类型
+    - 使用时anno2 = @MyAnno2
+  - String strs[]//字符数组 
 
 ​						   
 
-- 格式:			
-
-​			public @interface 注解名称{}
+- 格式: public @interface 注解名称{}
 
 - 注意：
 
