@@ -1,5 +1,6 @@
 ---
 title: JavaApi
+toc: content
 keywords: [Java, advance]
 ---
 
