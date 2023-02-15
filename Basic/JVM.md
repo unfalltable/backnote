@@ -1,5 +1,6 @@
 ---
 title: JVM
+toc: content
 keywords: [jvm, basic]
 ---
 
