@@ -336,8 +336,6 @@ keywords: [Java, basic]
   - 获取方法名	
 
 
----
-
 ### 注意
 
 1. 获取访问受限的成员时需要使用暴力反射
@@ -376,9 +374,9 @@ keywords: [Java, basic]
 ### 常用方法
 
 ```java
-* values()					   返回枚举类型的对象数组
-* valueOf(String str)            可以把字符串转为对应的枚举对象
-* toString()                     返回当前枚举类对象常量的名称
+values()					   返回枚举类型的对象数组
+valueOf(String str)            可以把字符串转为对应的枚举对象
+toString()                     返回当前枚举类对象常量的名称
 ```
 
 ## 注解（Annotation）	
