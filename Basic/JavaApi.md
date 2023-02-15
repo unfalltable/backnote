@@ -1,7 +1,7 @@
 ---
 title: JavaApi
 toc: content
-keywords: [Java, advance]
+keywords: [Java, api]
 ---
 
 ## API
