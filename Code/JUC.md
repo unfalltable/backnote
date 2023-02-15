@@ -1,5 +1,6 @@
 ---
 title: JUC源码
+toc: content
 keywords: [juc, code]
 ---
 
@@ -144,10 +145,6 @@ public final int updateAndGet(IntUnaryOperator updateFunction) {
 ## ConcurrentHashMap
 
 ### 常量
-
-```java
-
-```
 
 ### 成员变量
 
@@ -468,8 +465,6 @@ private final void transfer(Node<K,V>[] tab, Node<K,V>[] nextTab) {
 }
 ```
 
-
-
 ## LongAdder
 
 ### 成员变量
@@ -505,3 +500,6 @@ static final class Cell{
   - ==@sun.misc.Contended==可以解决这个问题，它通过在对象的前后各加上128字节的padding，从而让cpu将对象预读至不同的缓存行，所以不会造成失效
 
 ## AQS
+
+
+

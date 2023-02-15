@@ -1,5 +1,6 @@
 ---
 title: Nginx
+toc: content
 keywords: [middle]
 ---
 

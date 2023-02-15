@@ -1,5 +1,6 @@
 ---
 title: JDK源码
+toc: content
 keywords: [collection, code]
 ---
 
@@ -143,7 +144,7 @@ keywords: [collection, code]
   - first / last 为null 抛NoSuchElementException异常
   - 不为空则调用 unlinkFirst() / unlinkLast() 
 
-- unlink(Node<E> x)
+- unlink(Node\<E> x)
   - 定义三个常量保存节点的值 element、前驱节点 prev、后继节点 next
   - 先处理前驱，在处理后继，注意防止空指针异常
     - 判断 prev 是否为null
@@ -154,7 +155,7 @@ keywords: [collection, code]
       - 不为 null，则 next.prev = prev，x.next = null
   - 将x的值置为 null。更新 size，modCount++
   - 返回被删除的值 element
-- unlinkFirst(Node<E> f)
+- unlinkFirst(Node\<E> f)
   - 定义两个常量保存节点的值 element，后继节点 next
   - 将 f 的值和后继节点置为 null
   - 然后 first = next
@@ -166,7 +167,7 @@ keywords: [collection, code]
   - modCount++
   - 返回被删除的值 element
 
-- unlinkLast(Node<E> l)
+- unlinkLast(Node\<E> l)
   - 定义两个常量保存节点的值 element，前驱节点 prev
   - 将 l 的值和前驱节点置为 null
   - 然后 last = prev

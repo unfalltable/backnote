@@ -1,5 +1,6 @@
 ---
 title: ElasticSearch
+toc: content
 keywords: [middle, es]
 ---
 
