@@ -301,10 +301,10 @@ keywords: [Java, basic]
      * Field getDeclaredField(String name)     
        * 获取指定名称的成员变量
    * 获取构造方法
-     * Constructor<T>[] getConstructors(）
-     * Constructor<T> getConstructor(类<?>...  parameterTypes)
-     * Constructor<T>[] getDeclaredConstructors()
-     * Constructor<T>[] getDeclaredConstructors(类<?>...  parameterTypes)
+     * Constructor\<T>[] getConstructors(）
+     * Constructor\<T> getConstructor(类<?>...  pFarameterTypes)
+     * Constructor\<T>[] getDeclaredConstructors()
+     * Constructor\<T>[] getDeclaredConstructors(类<?>...  parameterTypes)
    
    * 获取成员方法
      * Method[] getMethods()
