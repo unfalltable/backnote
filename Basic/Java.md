@@ -422,9 +422,7 @@ keywords: [Java, basic]
     - 使用时 emum1 = enumTest.P1
   - MyAnno2 anno2();//注解类型
     - 使用时anno2 = @MyAnno2
-  - String strs[]//字符数组 
-
-​						   
+  - String strs[]//字符数组 			   
 
 - 格式: public @interface 注解名称{}
 
