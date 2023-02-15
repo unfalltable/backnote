@@ -89,11 +89,6 @@ keywords: [mybatis, db]
 
 ## 返回值中有集合
 
-```java
-```
-
-
-
 ## 映射文件深入
 
 ### 动态Sql
@@ -453,8 +448,6 @@ public void genCode() {
 }
 ```
 
-
-
 ## 常用注解
 
 ### TableField
@@ -698,5 +691,3 @@ public <T, S extends IService> Boolean updateCom(HashMap<String, T> exists, Hash
   
   )
   ```
-
-- 
