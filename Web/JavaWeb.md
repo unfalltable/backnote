@@ -1,5 +1,6 @@
 ---
 title: JavaWeb
+toc: content
 keywords: []
 ---
 
@@ -380,7 +381,7 @@ keywords: []
   - update
 - 查询
   - query
-    - 根据返回的数据类型选择对应的ResultSetHandler<T>的子类
+    - 根据返回的数据类型选择对应的ResultSetHandler\<T>的子类
       - 返回对象用BeanHandle
       - 返回键值对用MapHandle
       - 返回值用ScalarHandle
