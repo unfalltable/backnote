@@ -1,5 +1,6 @@
 ---
 title: SpringBoot
+toc: content
 keywords: [spring, springboot]
 ---
 
@@ -294,7 +295,7 @@ public class HelloController {
   - 调用数据层的方法实现业务功能
 - 测试
 - 为了简便以上繁琐的开发，Mp提供了一套快速开发
-  - 创建实体类对应的接口继承 ==IService<T>== 类
+  - 创建实体类对应的接口继承 ==IService\<T>== 类
     - ![image-20220121131707505](..//pic//image-20220121131707505.png)
   - 创建对应的实现类继承 ==ServiceImpl<K, V>== 实现对应的接口
     - ![image-20220121132705036](..//pic//image-20220121132705036.png)

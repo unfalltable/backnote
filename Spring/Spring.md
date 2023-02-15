@@ -1,5 +1,6 @@
 ---
 title: Spring5
+toc: content
 keywords: [spring]
 ---
 
@@ -325,12 +326,12 @@ factory.setAdvisor(advisor);
 
 ## 加载方式
 
-- XML中 <Bean id="" class="" />
+- XML中 \<Bean id="" class="" />
 - @Component、@service、@Controller、@Repository、@Import、@Bean
 - @ComponentScan(“路径”)、@Configuration
 - @ImportResource(“xml名”)
 - @Configuration(proxyBeanMethods =)
-- FactoryBean<T>
+- FactoryBean\<T>
 - 容器对象.registerBean()
 - 容器对象.registerSingleton(“Bean名”, Bean对象)    不会走bean的创建、依赖注入、初始化过程
 - 实现 ImportSelector、ImportBeanDefinitionRegister、BeanDefinitionRegistryPostProcessor 接口，实现对应的方法

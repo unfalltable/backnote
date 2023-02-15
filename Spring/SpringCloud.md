@@ -1,5 +1,6 @@
 ---
 title: SpringCLoud
+toc: content
 keywords: [spring, base, springcloud]
 ---
 

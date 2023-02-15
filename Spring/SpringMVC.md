@@ -1,5 +1,6 @@
 ---
 title: Springmvc
+toc: content
 keywords: [spring, mvc]
 ---
 
