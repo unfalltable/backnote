@@ -223,29 +223,29 @@ factory.setAdvisor(advisor);
 
 #### 实现类
 
-- DefaultListableBeanFactory
+##### DefaultListableBeanFactory
 
-  - 提供控制反转、基本的依赖注入、Bean生命周期的各个功能
+- 提供控制反转、基本的依赖注入、Bean生命周期的各个功能
 
-  - 默认无其他后处理器，解析不了注解，需要添加
+- 默认无其他后处理器，解析不了注解，需要添加
 
-    - `AnnotationConfigUtils.registerAnnotationConfigProcessors(容器对象);`
+  - `AnnotationConfigUtils.registerAnnotationConfigProcessors(容器对象);`
 
-    - 添加一些Spring内置的后处理器，但是并未启用
+  - 添加一些Spring内置的后处理器，但是并未启用
 
-      - 启动后处理器
+    - 启动后处理器
 
-        - ```java
-          容器对象.getBeanOfType(BeanFactoryPostProcessor.class)
-              ,values().stream().forEach(beanFactoryPostProcessor -> {
-              beanFactoryPostProcessor.postProcessBeanFactory(容器对象);
-          })
-          ```
+      - ```java
+        容器对象.getBeanOfType(BeanFactoryPostProcessor.class)
+            ,values().stream().forEach(beanFactoryPostProcessor -> {
+            beanFactoryPostProcessor.postProcessBeanFactory(容器对象);
+        })
+        ```
 
-  - 容器中的Bean对象在使用时才会创建
-    - 可以提前一次性创建
-      - `容器对象.preInstantiateSingletos()`
-    - 默认不会解析 ${}、#{}
+- 容器中的Bean对象在使用时才会创建
+  - 可以提前一次性创建
+    - `容器对象.preInstantiateSingletos()`
+  - 默认不会解析 ${}、#{}
 
 ### ApplicationContext
 
@@ -253,32 +253,31 @@ factory.setAdvisor(advisor);
 
 #### 实现类 
 
-- ClassPathXmlApplicationContext、FIleSystemXmlApplicationContext
+##### ClassPathXmlApplicationContext、FIleSystemXmlApplicationContext
 
-  - 创建DefaultListableBeanFactory
+- 创建DefaultListableBeanFactory
 
-  - 通过XmlBeanDefinitionReader中的loadBeanDefinitions()
+- 通过XmlBeanDefinitionReader中的loadBeanDefinitions()
 
-  - 读取Xml中的Bean
+- 读取Xml中的Bean
 
+##### AnnotationConfigApplicationContext
 
-- AnnotationConfigApplicationContext
+- 通过配置类创建容器
 
-  - 通过配置类创建容器
+- 会自动添加常用的后处理器
 
-  - 会自动添加常用的后处理器
+##### AnnotationConfigServletWebServerApplicationContext
 
-
-- AnnotationConfigServletWebServerApplicationContext
-  - 借助了内嵌的Tomcat
-  - 需要提供一些Bean
-    - ServletWebServerFactory
-    - DispatcherServlet
-    - DispatchServletRegistrationBean
-  - 非必须Bean
-    - Controller（web.servlet.mvc）
-      - 处理Request、Response
-      - 可以指定访问的url
+- 借助了内嵌的Tomcat
+- 需要提供一些Bean
+  - ServletWebServerFactory
+  - DispatcherServlet
+  - DispatchServletRegistrationBean
+- 非必须Bean
+  - Controller（web.servlet.mvc）
+    - 处理Request、Response
+    - 可以指定访问的url
 
 
 # Bean
@@ -358,87 +357,41 @@ factory.setAdvisor(advisor);
 
 # 后处理器
 
-- 实例化前后-依赖注入阶段-初始化前后-销毁前  进行扩展
+### 简介
 
-## Bean后处理器
-
-- AutowiredAnnotationBeanPostProcessor
-  - 解析@Autowired、@Value
-  
-  - 通过postProcessPorperties() 实现
-  
-    - ```java
-      DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
-      //设置解析器，处理@Value获取字符型的问题
-      beanFactory.setAutowireCandidateResolver(new ContextAnnotationAutowireCandidateResolver());
-      //查找哪些属性、方法上添加了@Autowired，这称为InjectionMetadata
-      AutowiredAnnotationBeanPostProcessor processor = new AutowiredAnnotationBeanPostProcessor();
-      processor.setBeanFactor(beanFactory);
-      processor.postProcessPorperties(指定每个属性的值, 被注入的目标, "Bean的名字");
-      	/*
-      		postProcessPorperties内部逻辑：
-      			找哪些属性上加了@Autowired注解，封装到InjectionMetadata对象metadata
-      			执行metadata.inject()，用反射赋值
-      	*/
-      ```
-  
-  - 模拟processor.postProcessPorperties()内部
-  
-    - ```java
-      Method findAutowiringMetadata = 
-         AutowiredAnnotationBeanPostProcessor.class.getDeclaredMethod("findAutowiringMetadata", 
-                                 String.class, Class.class, PropertyValue.class);
-      //强制访问private属性
-      findAutowiringMetadata.setAccessible(true);
-      //获取加了注解的属性的元信息
-      InjectionMetadata metadata = 
-          (InjectionMetadata)findAutowiringMetadata.invoke("bean名", Bean.class, 指定每个属性的值);
-      //调用InjectionMetadata的inject方法来进行依赖注入，ByType
-      metadata.inject(Bean, "Bean名", 指定每个属性的值);
-      ```
-  
-      - findAutowiringMetadata？
-  
-  - 模拟inject() 实现
-  
-    - ```java
-      //inject如何按类型注入
-      //1.反射获取对应的属性，成员变量、成员方法。
-      //2.封装为DependencyDescriptor
-      //2.1 成员变量注入
-      DependencyDescriptor dd = new DependencyDescriptor(成员变量, 是否必须注入);
-      Object o = beanFactory.doResolveDependency(dd, null, null, null);
-      //2.1成员方法参数注入
-      DependencyDescriptor dd = new DependencyDescriptor(new MethodParameter(成员方法, 方法参数下标));
-      Object o = beanFactory.doResolveDependency(dd, null, null, null);
-      ```
-  
-      - doResolveDependency() 根据反射获取的成员变量就可以找到它的类型，通过类型去找
+- 作用时机
+  - 实例化前后-依赖注入阶段-初始化前后-销毁前  进行扩展
 
 
-- CommonAnnotationBeanPostProcessor
-  - 解析@Resource、@PostConstruct、@PostDestroy
+### Bean后处理器
 
+#### AutowiredAnnotationBeanPostProcessor
 
-- ConfigurationPropertiesBindingPostProcessor
-  - 解析@ConfigurationProperties
-- AnnotationAwareAspectJAutoProxyCreator
+- 解析@Autowired、@Value
 
-  - 解析AOP相关注解
-  - 获取所有切面
+#### CommonAnnotationBeanPostProcessor
 
-    - 通过findEligibleAdvisors(目标类) 找到所有作用于目标类的切面，会将高级切面转化为低级切面
+- 解析@Resource、@PostConstruct、@PostDestroy
 
-  - 创建代理
+#### ConfigurationPropertiesBindingPostProcessor
 
-    - 通过wrapIfNecessary(目标类对象)，需要判断findEligibleAdvisors()返回的集合是否为空
+- 解析@ConfigurationProperties
 
+#### AnnotationAwareAspectJAutoProxyCreator
 
+- 解析AOP相关注解
+- 获取所有切面
 
-## BeanFactory后处理器
+  - 通过findEligibleAdvisors(目标类) 找到所有作用于目标类的切面，会将高级切面转化为低级切面
+
+- 创建代理
+
+  - 通过wrapIfNecessary(目标类对象)，需要判断findEligibleAdvisors()返回的集合是否为空
+
+### BeanFactory后处理器
 
 - ConfigurationClassPostProcessor
-  - 解析@ComponentScan、@Bean、@import
+  - 解析@ComponentScan、@Bean、@import、@ImportResource
 - MapperScannerConfigurer
   - 解析@MapperScan
 - internalConfigurationAnnotationProcessor
@@ -446,75 +399,13 @@ factory.setAdvisor(advisor);
   - 解析@Configuration、@Bean
 
 
-## 后处理器执行顺序
+### 后处理器执行顺序
 
 - 加入处理器的顺序决定执行的顺序
 - 可以通过比较器控制加入的顺序
   - `容器对象.getDependencyComparator()` 
 - 因为后处理器中都会实现一个getOrder方法，实现了Order接口
   - Order值越小优先级越高
-
-# 注解原理
-
-## @ComponentScan
-
-- 先查找类上是否有该注解
-- 获取包名路径
-- 读取路径下的类
-- 判断是否有@ComponentScan注解
-- 获取BeanDefinition
-- 注册Bean
-
-## @Mapper
-
-## @Bean
-
-- 标注的都是方法
-
-- 获取类的元信息
-
-  - ```java
-    CachingMetadataReaderFactory Metadata = new CachingMetadataReaderFactory();
-    Metadata.getMetaReader();
-    ```
-
-- 获取Bean定义
-
-  - ```java
-    BeanDefinitionBuilder beanDefinition = new BeanDefinitionBuilder();
-    beanDefinition
-    ```
-
-- @Bean标注的方法不支持重载，只有参数最多的方法会执行
-
-## @Autowired
-
-- Spring提供，先ByType后ByName，对象必须存在
-
-## @Rsource
-
-- 有JDK提供
-- ByType和ByName，可以指定Name
-
-## @Transactional
-
-## @EnableTransactionManagement
-
-- @Import(TransactionManagementConfigurationSelector.class)
-  - 切面
-  - 拦截器
-  - 注解解析
-
-## @EnableAspectJAutoProxy
-
-- @Import(AspectJAutoProxyRegister.class)
-  - 
-
-## @Configuration
-
-- 被标注的类相当于一个工厂类，类中@Bean标注的方法相当于工厂方法
-- 会给标注的类生成代理对象，目的是保证bean的单例特性
-- 
 
 # 内置功能
 
@@ -540,7 +431,12 @@ factory.setAdvisor(advisor);
 
 - 事务一般加在Service层
 - 底层使用AOP
-- @Transaction(propagation传播属性, isolation隔离级别, rollbackFor, noRollbackFor)
+- @Transaction
+  - propagation传播属性
+  - isolation隔离级别
+  - rollbackFor
+  - noRollbackFor
+
 
 ## 传播行为（7种）
 
@@ -557,7 +453,7 @@ A中调用B
 ## 回滚
 
 - 事务是由AOP来实现的，首先生成代理对象，通过TransactionInterceptor，调用invoke实现具体逻辑
-  1. 解析方法上事务的相关属性
+  1. 解析方法上事务的相关属性，判断是否开启新事务
   2. 获取数据库连接，关闭自动提交，开启事务
   3. 执行具体的sql逻辑
      - 成功：通过commitTransactionAfterReturning提交，通过doCommit实现

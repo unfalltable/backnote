@@ -10,6 +10,8 @@ keywords: [frame]
 
 ## 实体类设计
 
+- 重要数据的dto都需要继承该类，然后通过mybatis填充器自动填充操作信息
+
 ```java
 @Getter
 @Setter
@@ -334,7 +336,8 @@ public class ValidParam implements Serializable {
 
 #### 自定义校验注解
 
-
+- 写注解
+- 写处理器
 
 #### 注解表
 

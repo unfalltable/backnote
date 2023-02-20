@@ -4,6 +4,19 @@ toc: content
 keywords: [specification]
 ---
 
+## 概念
+
+### 数据模型
+
+| 值   | 场景                                         |
+| ---- | -------------------------------------------- |
+| DTO  | 接口入参，即前端传给后端的Json接收对象       |
+| VO   | 接口返回对象，即后端传给前端展示数据用的对象 |
+| PO   | 数据库表对应的对象，和Entity等同             |
+| BO   | 业务对象，即一组PO                           |
+
+
+
 ## LomboK
 
 - 避免使用@Data注解，使用@Getter、@Setter、@ToString替代
@@ -33,6 +46,7 @@ keywords: [specification]
 
 - 使用sum函数是如果可能出现为0的情况，需要使用 IFNULL(SUM(), 0) 约束
 - 用String类型接收返回值时要注意null的问题，有可能返回 null 字符串的
+- 尽量不要在已经线上正常运行的sql上加东西，最好再写一个sql
 
 ## 业务规范
 
@@ -44,4 +58,6 @@ keywords: [specification]
     - xml可能存在复用的情况
 
 ### 项目上线后，当发现代码有错误或者冗余时，尽量不要修改
+
+
 

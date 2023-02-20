@@ -17,6 +17,80 @@ keywords: [integrate]
 
 ## 权限集成
 
+## MybatisPlus集成
+
+### 分页插件
+
+```java
+@Bean
+public MybatisPlusInterceptor mybatisPlusInterceptor() {
+    // 3.4 之后
+    MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
+    // 指定数据源
+    PaginationInnerInterceptor paginationInnerInterceptor = new PaginationInnerInterceptor(DbType.MYSQL);
+    // 设置分页最大数限时 -1 不限制
+    paginationInnerInterceptor.setMaxLimit(500L);
+    interceptor.addInnerInterceptor(paginationInnerInterceptor);
+    // 添加防止全表更新与删除插件 （防止恶意语句执行 如 update set 没有where）
+    interceptor.addInnerInterceptor(new BlockAttackInnerInterceptor());
+    return interceptor;
+}
+```
+
+### 填充器
+
+```java
+@Bean
+public MetaObjectHandler getMybatisObjectHandler(ApplicationContext context) {
+    return new MetaObjectHandler() {
+        private static final String CREATE_BY = "createBy";
+        private static final String UPDATE_BY = "updateBy";
+
+        private static final String CREATE_TIME = "createTime";
+        private static final String UPDATE_TIME = "updateTime";
+
+        @Override
+        public void insertFill(MetaObject metaObject) {
+            fill(metaObject, CREATE_BY, CREATE_TIME);
+            fill(metaObject, UPDATE_BY, UPDATE_TIME);
+        }
+
+        @Override
+        public void updateFill(MetaObject metaObject) {
+            fill(metaObject, UPDATE_BY, UPDATE_TIME);
+        }
+
+        private void fill(MetaObject metaObject, final String userFiled, final String time) {
+            try {
+                Object user = metaObject.getValue(userFiled);
+                if(ObjectUtil.isNull(user)) {
+                    setFieldValByName(userFiled, this.getUserId(), metaObject);
+                }
+            } catch (Exception ignored){}
+            setFieldValByName(time, new Date(), metaObject);
+        }
+
+        /** 获取当前操作的用户 account */
+        private Serializable getUserId() {
+            try {
+                AccountUser user = context.getBean(AccountUser.class);
+                return user.getAccount();
+            } catch (Exception ignored) {
+                try {
+                    Class<?> cls = Class.forName("com.bda.huijun.common.security.util.SecurityUtils");
+                    Method method = ReflectUtil.getMethod(cls, "getAccount");
+                    return (Serializable) method.invoke(null);
+                } catch (Exception e) {}
+                log.warn("accountUser not exist!");
+            }
+            return "";
+        }
+    };
+}
+```
+
+## SpringBoot集成
+
 ## Nacos集成
 
 ### 注册中心
@@ -112,7 +186,7 @@ spring:
         namespace: e63b0d76-dc0d-4521-a81c-2168c578e773 #命名空间
         group: dev #配置分组
         file-extension: yml
-        ext-config: #加载多配置
+        ext-config: #加载多配置，配置上云管理
           - data-id: datasource.yml
             group: dev
             refresh: true

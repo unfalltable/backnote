@@ -46,72 +46,7 @@ keywords: [mysql, db]
 - ANY  |  SOME     和子查询返回的某一个值比较
 - ALL                    和子查询返回的所有值比较
 
-## DQL(数据查询语言--Data Query Language)
-
-### 基础查询
-
-`select 查询列表 from 表名`
-
-- 起别名
-  - 使用as
-    - SELECT 100*9 AS 结果;
-  - 使用空格
-    - SELECT 100*9 结果;
-  - 字符串用" "
-    - SELECT salary AS "out put" FROM employees;
-
-- 去重
-  - DISTINCT
-    - SELECT DISTINCT department_id FROM employees;
-- +号的作用
-  - 运算符
-    - 俩个操作数都为数值型，则进行加法运算
-    - 其中一方为字符型
-      - 字符为数字则进行计算
-        - "100" + 50 -> 150
-      - 为字符则字符数值为0
-        - "John" + 100 -> 100
-    - 其中一方为null则都为null
-      - null + 50 -> null
-
-### 条件查询
-
-`select 查询列表 from 表名 where 筛选条件 `
-
-- 筛选条件
-  - 条件表达式
-    - \> \< \= \!= \>= \<=   \<>不等于
-  - 逻辑表达式
-    - \&& \|| \!
-    - and or not 
-  - 模糊查询
-    - like
-      - %任意多个字符，包含0个
-      - _任意当个字符
-      - \转义字符   也可以使用ESCAPE 转义
-        - ESCAPE '$'  ==    \
-      - 无法显示null值
-    - between and 
-      - 包含临界值
-    - in(列表1，列表2)
-      - 判断值是否属于in列表中
-      - 不能使用通配符
-    - is null
-      - <=>   安全等于,可以搭配null
-
-### 排序查询
-
-`select 查询列表 from 表名 where 筛选条件 order by 排序列表 [asc默认升序/desc降序] `
-
-#### 注意
-
-- order by 后可以用别名
-- order by 要放在语句的最后
-- 支持多个字段，函数，表达式，别名
-
----
-
-### 函数
+## 函数
 
 #### 字符函数
 
@@ -121,7 +56,7 @@ keywords: [mysql, db]
   - IFNULL(可能为null的值，如果为空返回的值)
   - isnull(可能为null的值)    
     -  如果为空返回1 ,反之为0
-  
+
 - 获取字节长度
   - LENGTH(str)
 - 大小写
@@ -193,7 +128,8 @@ keywords: [mysql, db]
 #### 流程控制函数
 
 - 判断语句
-  -  IF(判断,true返回的值,false返回的值)
+
+  - IF(判断,true返回的值,false返回的值)
 
   - case
 
@@ -214,26 +150,27 @@ keywords: [mysql, db]
       when 判断2 then 要显示的值或语句;
 
       ELSE 以上都不符合要显示的值或语句;
-    
+
       END
-    
-  -  if结构
-  
-     -  if 条件1 then 语句1；
-  
-        elseif 条件2 then 语句2；
-  
-        。。。
-  
-        【else 语句n;】
-  
-        end if;
+
+  - if结构
+
+    - if 条件1 then 语句1；
+
+      elseif 条件2 then 语句2；
+
+      。。。
+
+      【else 语句n;】
+
+      end if;
 
 #### 分组函数（统计函数，聚合函数 ）
 
 `select 查询列表 from 表名 where 筛选条件 GROUP BY 子句语法`
 
 - ##### 常用函数
+
   - sum()  		求和					处理数值型
 
   - avg()          平均值            处理数值型
@@ -246,23 +183,85 @@ keywords: [mysql, db]
 
     - COUNT(字段)       统计该字段非空值的个数
     - COUNT(*)	          统计结果集行数，比COUNT(字段)效率高
+
 - COUNT(常量值)   统计结果集行数，比COUNT(字段)效率高 
-  
+
   - 以上都忽略null值,null值不参与运算,都可和distinct搭配使用 
     - count(distinct 字段)
-  
+
 - 分组后筛选数据
-  
+
   - HAVING  
     - 对分组筛选后的数据进行操作，用在GROUP BY 后，效果同where
-  
+
 - ##### 注意
 
   - GROUP BY 和 HAVING 后都可接别名
   - 筛选条件能写在where后优先现在where后，效率高
   - 多个字段分组用逗号隔开即可
 
----
+## DQL(数据查询语言--Data Query Language)
+
+### 基础查询
+
+`select 查询列表 from 表名`
+
+- 起别名
+  - 使用as
+    - SELECT 100*9 AS 结果;
+  - 使用空格
+    - SELECT 100*9 结果;
+  - 字符串用" "
+    - SELECT salary AS "out put" FROM employees;
+
+- 去重
+  - DISTINCT
+    - SELECT DISTINCT department_id FROM employees;
+- +号的作用
+  - 运算符
+    - 俩个操作数都为数值型，则进行加法运算
+    - 其中一方为字符型
+      - 字符为数字则进行计算
+        - "100" + 50 -> 150
+      - 为字符则字符数值为0
+        - "John" + 100 -> 100
+    - 其中一方为null则都为null
+      - null + 50 -> null
+
+### 条件查询
+
+`select 查询列表 from 表名 where 筛选条件 `
+
+- 筛选条件
+  - 条件表达式
+    - \> \< \= \!= \>= \<=   \<>不等于
+  - 逻辑表达式
+    - \&& \|| \!
+    - and or not 
+  - 模糊查询
+    - like
+      - %任意多个字符，包含0个
+      - _任意当个字符
+      - \转义字符   也可以使用ESCAPE 转义
+        - ESCAPE '$'  ==    \
+      - 无法显示null值
+    - between and 
+      - 包含临界值
+    - in(列表1，列表2)
+      - 判断值是否属于in列表中
+      - 不能使用通配符
+    - is null
+      - <=>   安全等于,可以搭配null
+
+### 排序查询
+
+`select 查询列表 from 表名 where 筛选条件 order by 排序列表 [asc默认升序/desc降序] `
+
+#### 注意
+
+- order by 后可以用别名
+- order by 要放在语句的最后
+- 支持多个字段，函数，表达式，别名
 
 ### 连接查询（多表查询）
 
@@ -1251,3 +1250,10 @@ end
   - 开启同步
 
   - 查看主从状态
+
+
+
+## 问题
+
+- 内链接与外连接
+  - inner和其他的区别
