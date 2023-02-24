@@ -304,6 +304,32 @@ spring:
             maxAge: 360000 
 ```
 
+## Activiti7集成
+
+1. 添加依赖
+2. 安装 actiBPM 插件
+
+## EasyExcel集成
+
+1. 依赖
+
+```xml
+<dependency>
+    <groupId>com.pig4cloud.excel</groupId>
+    <artifactId>excel-spring-boot-starter</artifactId>
+    <version>1.2.7</version>
+    <!-- 移除自带的log日志 -->
+    <exclusions>
+        <exclusion>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-logging</artifactId>
+        </exclusion>
+    </exclusions>
+</dependency>
+```
+
+
+
 ## Netty集成
 
 1. 依赖

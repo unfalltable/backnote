@@ -66,4 +66,3 @@ keywords: [optimization, sql]
     - NLJ算法：双重for，连接字段为非索引就是用这个算法
     - BNLJ算法：把 join 的驱动表放到了内存 buffer 中，减少了循环次数
     - INLJ算法：连接字段为索引字段用这个算法，内层表的连接索引字段进行匹配，减少内层表的循环次数
-

@@ -443,6 +443,10 @@ Integer result = task.get();
 
 ### ThreadLocal
 
+#### 简介
+
+- 如果您需要使用强引用来持有 `ThreadLocal` 变量，可以考虑使用 `ThreadLocal` 的子类 `InheritableThreadLocal`，它的实现方式是通过强引用来实现的。
+
 #### 结构
 
 - 每个ThreadLocal会对每一个线程创建一个ThreadLocalMap，第一次使用才会创建

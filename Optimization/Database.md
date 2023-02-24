@@ -4,8 +4,6 @@ toc: content
 keywords: [optimization, db]
 ---
 
-# MySQL
-
 ## 索引设计原则
 
 - 针对数据量大，查询频繁的表需要建立索引

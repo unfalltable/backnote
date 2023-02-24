@@ -408,7 +408,7 @@ public class Gs extends GsSettingEntity {
 
 ### EasyExcel
 
-导出
+#### 导出
 
 ```java
 @ResponseExcel
@@ -418,7 +418,7 @@ public List<ProductLineVO> export(@Validated Param param) {
 }
 ```
 
-导入
+#### 导入
 
 ```java
 @PostMapping("/import")
@@ -427,6 +427,135 @@ public R<?> importUser(@RequestExcel(ignoreEmptyRow = true) List<ProducePlanVO> 
     //数据存入数据库
 }
 ```
+
+#### 共通
+
+```java
+//动态列宽
+public class ExcelCellWidthStyleStrategy extends AbstractColumnWidthStyleStrategy {
+
+    private static final int MAX_COLUMN_WIDTH = 50;
+    private  Map<String, Map<Integer, Integer>> CACHE = new ConcurrentHashMap<>(8);
+
+    @Override
+    protected void setColumnWidth(WriteSheetHolder writeSheetHolder, List<WriteCellData<?>> cellDataList, Cell cell, Head head, Integer relativeRowIndex, Boolean isHead) {
+        boolean needSetWidth = isHead || !CollectionUtils.isEmpty(cellDataList);
+        String key = Objects.isNull(writeSheetHolder.getSheetNo()) ? writeSheetHolder.getSheetName(): writeSheetHolder.getSheetNo() + "";
+        if (needSetWidth) {
+            // 获取 key -> sheet 页各列的 宽度信息
+            Map<Integer, Integer> maxColumnWidthMap = CACHE.get(key);
+            if (maxColumnWidthMap == null) {
+                maxColumnWidthMap = new ConcurrentHashMap<>(16);
+                CACHE.put(key, maxColumnWidthMap);
+            }
+
+            // 计算当前 单元格 内容的大小
+            Integer columnWidth = this.dataLength(cellDataList, cell, isHead);
+            if (columnWidth >= 0) {
+                if (columnWidth > MAX_COLUMN_WIDTH) {
+                    columnWidth = MAX_COLUMN_WIDTH;
+                }
+
+                Integer maxColumnWidth = maxColumnWidthMap.get(cell.getColumnIndex());
+                // 若当前单元格的大小大约该列最大值 更新该列宽度 并记录
+                if (maxColumnWidth == null || columnWidth > maxColumnWidth) {
+                    maxColumnWidthMap.put(cell.getColumnIndex(), columnWidth);
+                    writeSheetHolder.getSheet().setColumnWidth(cell.getColumnIndex(), columnWidth * 256);
+                }
+            }
+        }
+    }
+
+    private Integer dataLength(List<WriteCellData<?>> cellDataList, Cell cell, Boolean isHead) {
+        if (isHead) {
+            return Math.min(cell.getStringCellValue().getBytes().length, "默认宽度".getBytes().length);
+            // 以内容长度作为主要宽度 head 长度不作为主要宽度
+            // return cell.getStringCellValue().getBytes().length;
+        } else {
+            CellData<?> cellData = cellDataList.get(0);
+            CellDataTypeEnum type = cellData.getType();
+            if (type == null) {
+                return -1;
+            } else {
+                switch(type) {
+                    case STRING:
+                        return cellData.getStringValue().getBytes().length;
+                    case BOOLEAN:
+                        return cellData.getBooleanValue().toString().getBytes().length;
+                    case NUMBER:
+                        return cellData.getNumberValue().toString().getBytes().length;
+                    default:
+                        return -1;
+                }
+            }
+        }
+    }
+}
+```
+
+```java
+//动态表头
+
+
+```
+
+```java
+//动态单元格
+public abstract class BaseExcelCellStyleStrategy implements CellWriteHandler {
+
+    private  Map<String, Map<Integer, String>> CACHE = new ConcurrentHashMap<>(8);
+
+    @Override
+    public void beforeCellCreate(WriteSheetHolder writeSheetHolder, WriteTableHolder writeTableHolder, Row row, Head head, Integer columnIndex, Integer relativeRowIndex, Boolean isHead) {
+        setCellStyle(writeSheetHolder, row.getSheet().getWorkbook(), row.getCell(columnIndex > 0 ? columnIndex - 1 : columnIndex), isHead);
+    }
+
+    protected void setCellStyle(WriteSheetHolder writeSheetHolder, Workbook workbook, Cell cell, Boolean isHead) {
+        String key = Objects.isNull(writeSheetHolder.getSheetNo()) ? writeSheetHolder.getSheetName(): writeSheetHolder.getSheetNo() + "";
+
+        // 获取 key -> sheet 页 列标 和 列信息
+        Map<Integer, String> columnMap = CACHE.get(key);
+        if (columnMap == null) {
+            columnMap = new ConcurrentHashMap<>(16);
+            CACHE.put(key, columnMap);
+        }
+
+        // 计算当前 单元格 内容的大小
+        if (Objects.nonNull(cell)) {
+            int index = cell.getColumnIndex();
+            String headInfo = this.getCellHeadInfo(cell, isHead);
+            if (StrUtil.isNotEmpty(headInfo)) {
+                columnMap.put(index, headInfo);
+            } else {
+                headInfo = columnMap.get(index);
+            }
+
+            if (StrUtil.isNotEmpty(headInfo)) {
+                // 有效的头部信息
+                fillCellStyle(key, headInfo, cell, workbook);
+            }
+        }
+    }
+
+    /**
+         * 设置这个单元格的样式
+         * @param sheetName sheetName
+         * @param headInfo 列头信息
+         * @param cell 单元格信息
+         * @param workbook
+         */
+    protected abstract void fillCellStyle(String sheetName, String headInfo, Cell cell, Workbook workbook);
+
+    private String getCellHeadInfo(Cell cell, Boolean isHead) {
+        if (isHead) {
+            return cell.getStringCellValue();
+        }
+        return null;
+    }
+}
+```
+
+
 
 ## 日志处理
 
@@ -544,6 +673,37 @@ fi
 
 # 工具封装
 
+## Mybatis工具类
+
+```java
+public class PageFactory {
+
+    public static <T> Page<T> getPage() {
+        HttpServletRequest request = HttpServletUtil.getRequest();
+        switch (HttpMethod.valueOf(request.getMethod())) {
+            case GET:
+                return getPageOfGetReq(request);
+            case POST:
+                // TODO
+            default:break;
+        }
+        return new Page<T>();
+    }
+
+    private static <T> Page<T> getPageOfGetReq(HttpServletRequest request) {
+        String ps = null;
+        String p = null;
+        if (ContentType.JSON.equals(request.getContentType())) {
+            // TODO
+        } else {
+            ps = request.getParameter(CommonConstants.PAGE_SIZE);
+            p = request.getParameter(CommonConstants.PAGE_CURRENT);
+        }
+        return new Page<T>(Convert.toInt(p, CommonConstants.PAGE_CURRENT_DEFAULT), Convert.toInt(ps, CommonConstants.PAGE_SIZE_DEFAULT));
+    }
+}
+```
+
 ## Redis工具类
 
 ## Date工具类
@@ -630,24 +790,12 @@ public class OkHttp3Utils {
     
     private static Type type = Type.HTTP;
     public enum Type {
-        /**
-         * http
-         */
-        HTTP,
-        /**
-         * https
-         */
-        HTTPS,
-        /**
-         * https 绕过
-         */
-        HTTPSW;
+        //http, https, https 绕过
+        HTTP, HTTPS, HTTPSW;
     }
-
     public static String get(final String url) throws IOException {
         return commonRequest(url, Request.Builder::get);
     }
-
     // application/x-www-form-urlencoded
     public static String post8from(final String url, final Map<String, String> parameters) throws IOException {
         return post8from(url, formBody -> {
@@ -659,7 +807,6 @@ public class OkHttp3Utils {
                 }
             });
     }
-
     // application/x-www-form-urlencoded
     public static String post8from(final String url, final String... values) throws IOException {
         return post8from(url, formBody -> {
@@ -776,6 +923,58 @@ public class OkHttp3Utils {
     }
 
     
+}
+```
+
+### SSLSocketClinet
+
+```java
+/**
+ * ssl 绕过
+ */
+public class SSLSocketClient {
+    public static SSLSocketFactory getSocketFactory(TrustManager manager) {
+        SSLSocketFactory socketFactory = null;
+        try {
+            SSLContext sslContext = SSLContext.getInstance("SSL");
+            sslContext.init(null, new TrustManager[]{manager}, new SecureRandom());
+            socketFactory = sslContext.getSocketFactory();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (KeyManagementException e) {
+            e.printStackTrace();
+        }
+        return socketFactory;
+    }
+
+    public static X509TrustManager getX509TrustManager() {
+        return new X509TrustManager() {
+            @Override
+            public void checkClientTrusted(X509Certificate[] chain, String authType) throws CertificateException {
+
+            }
+
+            @Override
+            public void checkServerTrusted(X509Certificate[] chain, String authType) throws CertificateException {
+
+            }
+
+            @Override
+            public X509Certificate[] getAcceptedIssuers() {
+                return new X509Certificate[0];
+            }
+        };
+    }
+
+    public static HostnameVerifier getHostnameVerifier() {
+        HostnameVerifier hostnameVerifier = new HostnameVerifier() {
+            @Override
+            public boolean verify(String s, SSLSession sslSession) {
+                return true;
+            }
+        };
+        return hostnameVerifier;
+    }
 }
 ```
 

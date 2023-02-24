@@ -242,7 +242,7 @@ factory.setAdvisor(advisor);
         })
         ```
 
-- 容器中的Bean对象在使用时才会创建
+- 容器中的Bean对象在使用时才会创建（延迟创建）
   - 可以提前一次性创建
     - `容器对象.preInstantiateSingletos()`
   - 默认不会解析 ${}、#{}
@@ -250,6 +250,7 @@ factory.setAdvisor(advisor);
 ### ApplicationContext
 
 - 间接继承了BeanFactory，功能更多，国际化、匹配资源、发布事件、环境信息等
+- 加载配置是就创建所有的对象，体验更好但是启动慢
 
 #### 实现类 
 
@@ -309,10 +310,10 @@ factory.setAdvisor(advisor);
   - 反射生成对象，堆中申请空间，给成员变量赋默认值
 - 初始化
   - Bean属性注入
-    - 
+    - 包括自定义属性和容器属性
   - Bean功能扩展
     - BeanPostProcessor
-      - 
+      - AOP在此处实现
 - 使用，通过容器对象调用getBean()方法获取Bean对象
 - 销毁
 
@@ -430,7 +431,7 @@ factory.setAdvisor(advisor);
 ## 是什么
 
 - 事务一般加在Service层
-- 底层使用AOP
+- 底层使用AOP，通过TransactionInterceptor实现
 - @Transaction
   - propagation传播属性
   - isolation隔离级别
@@ -487,7 +488,31 @@ A中调用B
 
 - mysql没开启事务
 
-# 其他注解
+# 注解
+
+## @Bean
+
+- 只能标注方法
+- @Bean标注的方法不支持重载，只有参数最多的方法会执行
+
+## @Mapper
+
+- 扫描mapper包，获取其元信息，判断是否是注解
+- 获取Bean定义，传入MapperFactoryBean类作为参数
+
+## @Rsource
+
+- 有JDK提供
+- ByType和ByName，可以指定Name
+
+## @Autowired
+
+- Spring提供，先ByType后ByName，对象必须存在
+
+## @Configuration
+
+- 被标注的类相当于一个工厂类，类中@Bean标注的方法相当于工厂方法
+- 会给标注的类生成代理对象，目的是保证bean的单例特性
 
 ## @Nullable
 
